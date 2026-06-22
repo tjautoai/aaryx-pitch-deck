@@ -433,7 +433,90 @@
   @media (max-width:860px){ .timeline{ grid-template-columns:repeat(4,1fr); } }
   @media (max-width:560px){ .timeline{ grid-template-columns:repeat(2,1fr); } }
 
-  /* ---------- Slide 7 : VALUE CHART ---------- */
+  /* ---------- Slide 7 : BONUS STACK ---------- */
+  .bonus-grid{
+    margin-top:1.4rem;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+  }
+  .bonus-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:1.25rem 1.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+  }
+  .bonus-card.highlight{
+    background:var(--blue-soft);
+    border-color:var(--blue-border);
+  }
+  .bonus-copy{
+    display:flex;
+    flex-direction:column;
+    gap:0.3rem;
+  }
+  .bonus-name{
+    font-family:'Space Mono',monospace;
+    font-size:0.92rem;
+    font-weight:700;
+    color:var(--white);
+    line-height:1.4;
+  }
+  .bonus-label{
+    font-size:0.82rem;
+    color:var(--muted-dim);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .bonus-value{
+    font-family:'Space Mono',monospace;
+    font-size:1.05rem;
+    font-weight:700;
+    color:var(--blue);
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .bonus-totals{
+    margin-top:1.2rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+  .bonus-total-card{
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:1.1rem 1.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+  }
+  .bonus-total-card strong{
+    font-family:'Space Mono',monospace;
+    font-size:1.15rem;
+    color:var(--white);
+  }
+  .bonus-total-card .label{
+    font-family:'Space Mono',monospace;
+    font-size:0.82rem;
+    letter-spacing:0.06em;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+  .bonus-total-card .value{
+    font-family:'Space Mono',monospace;
+    font-size:1.2rem;
+    font-weight:700;
+    color:var(--blue);
+    white-space:nowrap;
+  }
+
+  /* ---------- Slide 8 : VALUE CHART ---------- */
   .chart{
     margin-top:1.3rem;
     display:flex;
@@ -473,7 +556,7 @@
     max-width:190px;
   }
 
-  /* ---------- Slide 8 : PRICING ---------- */
+  /* ---------- Slide 9 : PRICING ---------- */
   .pricing-grid{
     margin-top:1.4rem;
     display:grid;
@@ -524,8 +607,8 @@
   }
   .guarantee-box p{ font-size:0.9rem; color:var(--muted); line-height:1.6; }
 
-  /* ---------- Slide 9 : CTA ---------- */
-  #slide-9{ background:radial-gradient(circle at 50% 30%, #0E2342 0%, #050B16 70%); }
+  /* ---------- Slide 10 : CTA ---------- */
+  #slide-10{ background:radial-gradient(circle at 50% 30%, #0E2342 0%, #050B16 70%); }
   .cta-content{ text-align:center; display:flex; flex-direction:column; align-items:center; }
   .cta-headline{
     font-family:'Space Mono',monospace;
@@ -564,7 +647,7 @@
   .section-head{ margin-bottom:0.4rem; }
 
   @media (max-width:760px){
-    .icp-grid, .pricing-grid, .leak-grid{ grid-template-columns:1fr; }
+    .icp-grid, .pricing-grid, .leak-grid, .bonus-grid, .bonus-totals{ grid-template-columns:1fr; }
     .t-row{ grid-template-columns:1fr; }
     .t-head .crm{ display:none; }
   }
@@ -584,9 +667,10 @@
     <a href="#slide-7" class="dot" aria-label="Slide 7"></a>
     <a href="#slide-8" class="dot" aria-label="Slide 8"></a>
     <a href="#slide-9" class="dot" aria-label="Slide 9"></a>
+    <a href="#slide-10" class="dot" aria-label="Slide 10"></a>
   </nav>
 
-  <div class="deck-counter"><b class="slide-counter-num">01</b> / 09</div>
+  <div class="deck-counter"><b class="slide-counter-num">01</b> / 10</div>
 
   <main class="deck">
 
@@ -803,8 +887,74 @@
       <div class="slide-meta">06 — 8 WEEK ROLLOUT</div>
     </section>
 
-    <!-- SLIDE 7 — VALUE CHART -->
+    <!-- SLIDE 7 — BONUS STACK -->
     <section class="slide" id="slide-7">
+      <div class="slide-inner top">
+        <div class="section-head">
+          <div class="eyebrow">THE BONUS STACK</div>
+          <h2 class="headline">And that's before the bonuses.</h2>
+        </div>
+
+        <div class="bonus-grid">
+          <div class="bonus-card highlight">
+            <div class="bonus-copy">
+              <span class="bonus-label">Bonus 1</span>
+              <span class="bonus-name">Relationship Revenue Leak Assessment</span>
+            </div>
+            <span class="bonus-value">$2,500</span>
+          </div>
+          <div class="bonus-card">
+            <div class="bonus-copy">
+              <span class="bonus-label">Bonus 2</span>
+              <span class="bonus-name">Referral Partner Retention Playbook</span>
+            </div>
+            <span class="bonus-value">$1,500</span>
+          </div>
+          <div class="bonus-card">
+            <div class="bonus-copy">
+              <span class="bonus-label">Bonus 3</span>
+              <span class="bonus-name">AI Follow-Up Templates Library</span>
+            </div>
+            <span class="bonus-value">$2,000</span>
+          </div>
+          <div class="bonus-card">
+            <div class="bonus-copy">
+              <span class="bonus-label">Bonus 4</span>
+              <span class="bonus-name">Communication Rescue Campaigns</span>
+            </div>
+            <span class="bonus-value">$2,500</span>
+          </div>
+          <div class="bonus-card" style="grid-column:1 / -1;">
+            <div class="bonus-copy">
+              <span class="bonus-label">Bonus 5</span>
+              <span class="bonus-name">90 Day Executive Optimization Review</span>
+            </div>
+            <span class="bonus-value">$2,500</span>
+          </div>
+        </div>
+
+        <div class="bonus-totals">
+          <div class="bonus-total-card">
+            <div>
+              <div class="label">Bonus Stack</div>
+              <strong>Included extras</strong>
+            </div>
+            <div class="value">$11,000</div>
+          </div>
+          <div class="bonus-total-card">
+            <div>
+              <div class="label">Total Perceived Value</div>
+              <strong>With bonuses included</strong>
+            </div>
+            <div class="value">$57,000+</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-meta">07 — THE BONUS STACK</div>
+    </section>
+
+    <!-- SLIDE 8 — VALUE CHART -->
+    <section class="slide" id="slide-8">
       <div class="slide-inner top">
         <div class="section-head">
           <div class="eyebrow">The Math</div>
@@ -829,11 +979,11 @@
           </div>
         </div>
       </div>
-      <div class="slide-meta">07 — VALUE STACK</div>
+      <div class="slide-meta">08 — VALUE STACK</div>
     </section>
 
-    <!-- SLIDE 8 — PRICING + GUARANTEE -->
-    <section class="slide" id="slide-8">
+    <!-- SLIDE 9 — PRICING + GUARANTEE -->
+    <section class="slide" id="slide-9">
       <div class="slide-inner top">
         <div class="section-head">
           <div class="eyebrow">The Investment</div>
@@ -870,11 +1020,11 @@
           <p>If we cannot identify and surface communication risks, follow-up failures, and at-risk relationships within the first 30 days, we continue working at no cost until we do.</p>
         </div>
       </div>
-      <div class="slide-meta">08 — PRICING</div>
+      <div class="slide-meta">09 — PRICING</div>
     </section>
 
-    <!-- SLIDE 9 — CTA -->
-    <section class="slide" id="slide-9">
+    <!-- SLIDE 10 — CTA -->
+    <section class="slide" id="slide-10">
       <div class="slide-inner">
         <div class="cta-content">
           <h2 class="cta-headline"><span class="accent">Protect</span> Revenue.<br><span class="accent">Protect</span> Referrals.<br><span class="accent">Protect</span> Reputation.</h2>
@@ -883,7 +1033,7 @@
           <div class="cta-footer">AARYX AI &nbsp;·&nbsp; Relationship Revenue Protection System<span class="tm">TM</span> &nbsp;·&nbsp; aaryxai.com</div>
         </div>
       </div>
-      <div class="slide-meta">09 — LET'S TALK</div>
+      <div class="slide-meta">10 — LET'S TALK</div>
     </section>
 
   </main>
