@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aaryx AI — The Relationship Revenue Protection System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0C447C;
+    --bg:#050B16;
+    --bg-panel:#0A1A2E;
+    --bg-panel-2:#0F2238;
+    --blue:#3B6AF5;
+    --blue-soft:rgba(59,106,245,0.14);
+    --blue-border:rgba(59,106,245,0.35);
+    --white:#FFFFFF;
+    --muted:#AEC0D8;
+    --muted-dim:#6E83A0;
+    --red:#FF5C6C;
+    --red-soft:rgba(255,92,108,0.14);
+    --line:rgba(255,255,255,0.09);
+    --l1:#0C2A4D;
+    --l2:#1C3F85;
+    --l3:#2B55BD;
+    --l4:#3B6AF5;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html,body{
+    height:100%;
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size:30px 30px;
+    z-index:0;
+    pointer-events:none;
+  }
+
+  .tm{ font-family:'Inter',sans-serif; font-weight:600; font-size:0.5em; vertical-align:super; letter-spacing:0; }
+  .accent{ color:var(--blue); }
+
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:1.1rem;
+  }
+
+  .headline{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    color:var(--white);
+    line-height:1.18;
+    font-size:clamp(1.55rem, 2.6vw, 2.35rem);
+    max-width:920px;
+  }
+
+  .sub{
+    font-family:'Inter',sans-serif;
+    color:var(--muted);
+    font-size:clamp(0.98rem, 1.2vw, 1.12rem);
+    line-height:1.65;
+    max-width:680px;
+    margin-top:1.1rem;
+  }
+
+  /* ---------- Deck shell ---------- */
+  .deck{
+    position:relative;
+    z-index:1;
+    height:100vh;
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+    scroll-behavior:smooth;
+  }
+
+  .slide{
+    height:100vh;
+    width:100%;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .slide-inner{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:clamp(20px,4vh,48px) clamp(24px,5vw,64px);
+    height:100%;
+    max-height:100%;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .slide-inner.top{ justify-content:flex-start; padding-top:clamp(44px,7.5vh,80px); }
+
+  .slide-meta{
+    position:absolute;
+    bottom:28px;
+    left:clamp(24px,5vw,64px);
+    font-family:'Space Mono',monospace;
+    font-size:0.78rem;
+    color:var(--muted-dim);
+    letter-spacing:0.06em;
+    z-index:3;
+  }
+
+  /* ---------- Fixed chrome ---------- */
+  .brandmark{
+    position:fixed;
+    top:26px;
+    left:clamp(24px,5vw,64px);
+    z-index:50;
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:0.1em;
+    color:var(--white);
+  }
+  .brandmark span{ color:var(--blue); }
+
+  .deck-counter{
+    position:fixed;
+    bottom:28px;
+    right:clamp(24px,5vw,64px);
+    z-index:50;
+    font-family:'Space Mono',monospace;
+    font-size:0.85rem;
+    color:var(--muted);
+    letter-spacing:0.04em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .deck-counter b{ color:var(--white); }
+
+  .dotnav{
+    position:fixed;
+    right:clamp(16px,3vw,30px);
+    top:50%;
+    transform:translateY(-50%);
+    z-index:50;
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+  }
+  .dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.18);
+    display:block;
+    cursor:pointer;
+    transition:background 200ms ease, transform 200ms ease;
+  }
+  .dot:hover{ background:rgba(255,255,255,0.4); }
+  .dot.active{ background:var(--blue); transform:scale(1.3); box-shadow:0 0 10px rgba(59,106,245,0.7); }
+  .dot:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; }
+
+  /* ---------- Slide 1 : HERO ---------- */
+  #slide-1{ background:radial-gradient(circle at 50% 38%, #0E2342 0%, #050B16 72%); }
+
+  .radar{
+    position:absolute;
+    top:38%;
+    left:50%;
+    width:10px;
+    height:10px;
+    z-index:1;
+    pointer-events:none;
+  }
+  .radar .ring{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:10px;
+    height:10px;
+    border:1.5px solid var(--blue);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    opacity:0;
+    animation:radarPulse 4.5s ease-out infinite;
+  }
+  .radar .r2{ animation-delay:1.1s; }
+  .radar .r3{ animation-delay:2.2s; }
+  .radar .r4{ animation-delay:3.3s; }
+  .radar .core{
+    position:absolute; top:50%; left:50%;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--blue);
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 26px 8px rgba(59,106,245,0.55);
+  }
+  @keyframes radarPulse{
+    0%{ width:10px; height:10px; opacity:0.85; border-width:2px; }
+    65%{ opacity:0.16; }
+    100%{ width:960px; height:960px; opacity:0; border-width:1px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .radar .ring{ animation:none; opacity:0.12; width:340px; height:340px; }
+  }
+
+  .hero-content{ position:relative; z-index:2; text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .hero-content .eyebrow{ margin-bottom:1.6rem; }
+  .hero-content .headline{
+    font-size:clamp(2.1rem, 5vw, 3.7rem);
+    max-width:880px;
+  }
+  .hero-content .sub{ max-width:600px; margin-left:auto; margin-right:auto; }
+  .founder-line{
+    margin-top:2.6rem;
+    font-family:'Inter',sans-serif;
+    font-size:0.92rem;
+    color:var(--muted-dim);
+    padding-top:1.4rem;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- Slide 2 : PROBLEM ---------- */
+  .pipeline-wrap{ margin-top:1.7rem; width:100%; }
+  .pipe-svg{ width:100%; height:auto; display:block; }
+  .leak-dot{
+    position:absolute;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:var(--red);
+    box-shadow:0 0 0 6px var(--red-soft);
+    animation:leakPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes leakPulse{
+    0%,100%{ box-shadow:0 0 0 5px var(--red-soft); }
+    50%{ box-shadow:0 0 0 10px var(--red-soft); }
+  }
+  @media (prefers-reduced-motion: reduce){ .leak-dot{ animation:none; } }
+
+  .leak-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:1.1rem;
+  }
+  .leak-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:1.1rem 1.4rem;
+  }
+  .leak-card .leak-title{
+    font-family:'Space Mono',monospace;
+    font-size:0.92rem;
+    font-weight:700;
+    color:var(--red);
+    margin-bottom:0.55rem;
+  }
+  .leak-card .leak-desc{
+    font-size:0.92rem;
+    color:var(--muted);
+    line-height:1.55;
+  }
+
+  /* ---------- Slide 3 : ICP ---------- */
+  .icp-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:1.5rem;
+  }
+  .icp-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:1.5rem 1.6rem;
+  }
+  .icp-icon{
+    width:38px; height:38px;
+    color:var(--blue);
+    margin-bottom:1rem;
+  }
+  .icp-card h3{
+    font-family:'Space Mono',monospace;
+    font-size:1.05rem;
+    margin-bottom:0.7rem;
+  }
+  .icp-card p{
+    font-size:0.92rem;
+    color:var(--muted);
+    line-height:1.6;
+  }
+  .icp-footer{
+    margin-top:1.4rem;
+    text-align:center;
+    font-family:'Space Mono',monospace;
+    font-size:0.82rem;
+    color:var(--muted-dim);
+    letter-spacing:0.03em;
+    padding-top:1rem;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- Slide 4 : CRM vs TRACKT ---------- */
+  .table-wrap{
+    margin-top:1.4rem;
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .t-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .t-head .t-cell{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:0.92rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:0.8rem 1.6rem;
+  }
+  .t-head .crm{ background:var(--bg-panel-2); color:var(--muted); }
+  .t-head .trackt{ background:var(--blue); color:var(--white); }
+  .t-row:not(.t-head):nth-child(even){ background:rgba(255,255,255,0.018); }
+  .t-cell{
+    padding:0.78rem 1.6rem;
+    font-size:0.92rem;
+    line-height:1.4;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border-top:1px solid var(--line);
+  }
+  .t-cell.crm{ color:var(--muted); }
+  .t-cell.trackt{ color:var(--white); font-weight:500; background:var(--blue-soft); }
+  .t-icon{ width:18px; height:18px; flex-shrink:0; }
+  .t-icon.dash{ color:var(--muted-dim); }
+  .t-icon.check{ color:var(--blue); }
+
+  /* ---------- Slide 5 : ARCHITECTURE ---------- */
+  .layers{ margin-top:1.4rem; display:flex; flex-direction:column; gap:10px; }
+  .layer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1.5rem;
+    padding:1.1rem 2.1rem;
+    border-radius:14px;
+    border:1px solid var(--blue-border);
+  }
+  .layer-l1{ background:var(--l1); }
+  .layer-l2{ background:var(--l2); }
+  .layer-l3{ background:var(--l3); }
+  .layer-l4{ background:var(--l4); }
+  .layer-label{ display:flex; flex-direction:column; gap:0.3rem; }
+  .layer-tag{
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    color:rgba(255,255,255,0.65);
+  }
+  .layer-name{ font-size:0.98rem; font-weight:600; color:var(--white); }
+  .layer-value{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:clamp(1.1rem,1.8vw,1.45rem);
+    color:var(--white);
+    flex-shrink:0;
+    padding-left:1.5rem;
+    white-space:nowrap;
+  }
+  .layers-total{
+    margin-top:6px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0.85rem 2.1rem;
+    border-top:2px solid var(--blue);
+  }
+  .layers-total .tt-label{ font-family:'Space Mono',monospace; font-size:0.85rem; letter-spacing:0.06em; color:var(--muted); text-transform:uppercase; }
+  .layers-total .tt-value{ font-family:'Space Mono',monospace; font-weight:700; font-size:clamp(1.3rem,2.2vw,1.7rem); color:var(--blue); padding-left:1.5rem; }
+
+  /* ---------- Slide 6 : TIMELINE ---------- */
+  .timeline{
+    margin-top:1.5rem;
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:10px;
+  }
+  .week-block{
+    border-radius:12px;
+    padding:0.9rem 0.65rem;
+    min-height:170px;
+    display:flex;
+    flex-direction:column;
+    gap:0.6rem;
+  }
+  .week-tag{
+    font-family:'Space Mono',monospace;
+    font-size:0.7rem;
+    font-weight:700;
+    letter-spacing:0.06em;
+    color:rgba(255,255,255,0.75);
+  }
+  .week-title{
+    font-size:clamp(0.7rem,0.9vw,0.8rem);
+    line-height:1.38;
+    font-weight:600;
+    color:var(--white);
+    overflow-wrap:break-word;
+  }
+  @media (max-width:860px){ .timeline{ grid-template-columns:repeat(4,1fr); } }
+  @media (max-width:560px){ .timeline{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ---------- Slide 7 : VALUE CHART ---------- */
+  .chart{
+    margin-top:1.3rem;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:clamp(24px,5vw,64px);
+    height:360px;
+  }
+  .chart-col{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    height:100%;
+    width:200px;
+  }
+  .chart-value{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:clamp(1.05rem,1.8vw,1.35rem);
+    color:var(--white);
+    margin-bottom:14px;
+    white-space:nowrap;
+  }
+  .bar{
+    width:108px;
+    border-radius:10px 10px 0 0;
+    background:linear-gradient(180deg,var(--blue),#1E3E96);
+  }
+  .bar.dim{ background:linear-gradient(180deg,#26406F,#142A52); }
+  .chart-label{
+    margin-top:16px;
+    font-size:0.88rem;
+    color:var(--muted);
+    text-align:center;
+    line-height:1.4;
+    max-width:190px;
+  }
+
+  /* ---------- Slide 8 : PRICING ---------- */
+  .pricing-grid{
+    margin-top:1.4rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+  }
+  .price-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:1.5rem 1.9rem;
+    display:flex;
+    flex-direction:column;
+  }
+  .price-card.highlight{ border-color:var(--blue-border); background:var(--blue-soft); }
+  .price-tag{
+    font-family:'Space Mono',monospace;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:0.6rem;
+  }
+  .price-amount{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:clamp(1.7rem,2.8vw,2.2rem);
+    color:var(--white);
+    margin-bottom:0.9rem;
+    padding-right:0.4rem;
+  }
+  .price-list{ display:flex; flex-direction:column; gap:0.5rem; margin-top:0.2rem; }
+  .price-list .item{ display:flex; align-items:flex-start; gap:10px; font-size:0.9rem; color:var(--muted); line-height:1.45; }
+  .price-list .item svg{ width:16px; height:16px; flex-shrink:0; margin-top:2px; color:var(--blue); }
+
+  .guarantee-box{
+    margin-top:14px;
+    border-left:4px solid var(--blue);
+    background:var(--bg-panel-2);
+    border-radius:0 14px 14px 0;
+    padding:1.1rem 1.7rem;
+  }
+  .guarantee-box h4{
+    font-family:'Space Mono',monospace;
+    font-size:0.98rem;
+    margin-bottom:0.4rem;
+    color:var(--white);
+  }
+  .guarantee-box p{ font-size:0.9rem; color:var(--muted); line-height:1.6; }
+
+  /* ---------- Slide 9 : CTA ---------- */
+  #slide-9{ background:radial-gradient(circle at 50% 30%, #0E2342 0%, #050B16 70%); }
+  .cta-content{ text-align:center; display:flex; flex-direction:column; align-items:center; }
+  .cta-headline{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:clamp(1.9rem,4.6vw,3.3rem);
+    line-height:1.28;
+  }
+  .cta-sub{ margin-top:1.4rem; color:var(--muted); font-size:1.05rem; max-width:560px; }
+  .cta-btn{
+    margin-top:2.4rem;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--blue);
+    color:var(--white);
+    font-weight:700;
+    font-size:1rem;
+    padding:1rem 2.1rem;
+    border-radius:10px;
+    text-decoration:none;
+    cursor:pointer;
+    transition:transform 180ms ease, box-shadow 180ms ease;
+    min-height:44px;
+  }
+  .cta-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(59,106,245,0.35); }
+  .cta-btn:focus-visible{ outline:2px solid var(--white); outline-offset:3px; }
+  .cta-footer{
+    margin-top:3rem;
+    padding-top:1.4rem;
+    border-top:1px solid var(--line);
+    font-size:0.85rem;
+    color:var(--muted-dim);
+  }
+
+  /* ---------- shared section heading block spacing ---------- */
+  .section-head{ margin-bottom:0.4rem; }
+
+  @media (max-width:760px){
+    .icp-grid, .pricing-grid, .leak-grid{ grid-template-columns:1fr; }
+    .t-row{ grid-template-columns:1fr; }
+    .t-head .crm{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="brandmark">AARYX<span>·</span>AI</div>
+
+  <nav class="dotnav" aria-label="Slide navigation">
+    <a href="#slide-1" class="dot active" aria-label="Slide 1"></a>
+    <a href="#slide-2" class="dot" aria-label="Slide 2"></a>
+    <a href="#slide-3" class="dot" aria-label="Slide 3"></a>
+    <a href="#slide-4" class="dot" aria-label="Slide 4"></a>
+    <a href="#slide-5" class="dot" aria-label="Slide 5"></a>
+    <a href="#slide-6" class="dot" aria-label="Slide 6"></a>
+    <a href="#slide-7" class="dot" aria-label="Slide 7"></a>
+    <a href="#slide-8" class="dot" aria-label="Slide 8"></a>
+    <a href="#slide-9" class="dot" aria-label="Slide 9"></a>
+  </nav>
+
+  <div class="deck-counter"><b class="slide-counter-num">01</b> / 09</div>
+
+  <main class="deck">
+
+    <!-- SLIDE 1 — HERO -->
+    <section class="slide" id="slide-1">
+      <div class="radar" aria-hidden="true">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="ring r3"></span>
+        <span class="ring r4"></span>
+        <span class="core"></span>
+      </div>
+      <div class="slide-inner">
+        <div class="hero-content">
+          <div class="eyebrow">AARYX AI</div>
+          <h1 class="headline">The Relationship<br>Revenue Protection System<span class="tm">TM</span></h1>
+          <p class="sub">Never let a hot lead, a client relationship, or a referral partner fall through the cracks again.</p>
+          <p class="founder-line">Built by a licensed REALTOR with 25+ years of operational business experience.</p>
+        </div>
+      </div>
+      <div class="slide-meta">AARYX AI / RELATIONSHIP REVENUE PROTECTION SYSTEM</div>
+    </section>
+
+    <!-- SLIDE 2 — PROBLEM -->
+    <section class="slide" id="slide-2">
+      <div class="slide-inner top">
+        <div class="section-head">
+          <div class="eyebrow">The Problem</div>
+          <h2 class="headline">Most businesses don't lose deals to marketing.<br>They lose them to <span class="accent">communication breakdown.</span></h2>
+          <p class="sub">By the time the owner notices, the relationship is already gone.</p>
+        </div>
+
+        <div class="pipeline-wrap">
+          <svg class="pipe-svg" viewBox="0 0 1100 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Diagram of a pipeline with three fracture points leaking revenue">
+            <defs>
+              <linearGradient id="pipeGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#0C2A4D"/>
+                <stop offset="100%" stop-color="#3B6AF5"/>
+              </linearGradient>
+            </defs>
+            <rect x="30" y="48" width="1040" height="34" rx="17" fill="url(#pipeGrad)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+            <!-- fracture marks -->
+            <g stroke="#FF5C6C" stroke-width="2.4" stroke-linecap="round">
+              <path d="M183 46 L 175 65 L 191 65 L 183 84"/>
+              <path d="M550 46 L 542 65 L 558 65 L 550 84"/>
+              <path d="M917 46 L 909 65 L 925 65 L 917 84"/>
+            </g>
+          </svg>
+          <span class="leak-dot" style="left:16.66%; top:78px;"></span>
+          <span class="leak-dot" style="left:50%; top:78px;"></span>
+          <span class="leak-dot" style="left:83.33%; top:78px;"></span>
+        </div>
+
+        <div class="leak-grid">
+          <div class="leak-card">
+            <div class="leak-title">LEAD LEAK</div>
+            <div class="leak-desc">Leads slip through the cracks with no one noticing until they're gone.</div>
+          </div>
+          <div class="leak-card">
+            <div class="leak-title">REFERRAL LEAK</div>
+            <div class="leak-desc">Referral partners quietly disengage and stop sending business.</div>
+          </div>
+          <div class="leak-card">
+            <div class="leak-title">CLIENT LEAK</div>
+            <div class="leak-desc">Communication breakdowns go unnoticed until the client is already gone.</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-meta">02 — THE PROBLEM</div>
+    </section>
+
+    <!-- SLIDE 3 — ICP -->
+    <section class="slide" id="slide-3">
+      <div class="slide-inner top">
+        <div class="section-head">
+          <div class="eyebrow">Who This Protects</div>
+          <h2 class="headline">Built for relationship-driven revenue.</h2>
+        </div>
+
+        <div class="icp-grid">
+          <div class="icp-card">
+            <svg class="icp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M9.5 19.5v-6h5v6"/>
+            </svg>
+            <h3>Real Estate Teams</h3>
+            <p>Buyer leads, seller leads, and referral partners go cold while no one is watching.</p>
+          </div>
+          <div class="icp-card">
+            <svg class="icp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9.5 12 4l9 5.5"/><path d="M4.5 9.5h15V20h-15z"/><path d="M8 9.5V20M12 9.5V20M16 9.5V20"/><path d="M3 20h18"/>
+            </svg>
+            <h3>Mortgage Brokerages</h3>
+            <p>Loan applications stall and realtor relationships cool off mid-pipeline.</p>
+          </div>
+          <div class="icp-card">
+            <svg class="icp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3.5 19.5 6.5V12c0 5-3.5 7.7-7.5 9-4-1.3-7.5-4-7.5-9V6.5z"/><path d="M9 12l2.2 2.2L15.5 9.8"/>
+            </svg>
+            <h3>Insurance Agencies</h3>
+            <p>Renewals and cross-sell opportunities get missed every single cycle.</p>
+          </div>
+        </div>
+
+        <div class="icp-footer">5–50 EMPLOYEES &nbsp;·&nbsp; ACTIVE LEAD FLOW &nbsp;·&nbsp; RELATIONSHIP-DEPENDENT REVENUE</div>
+      </div>
+      <div class="slide-meta">03 — ICP</div>
+    </section>
+
+    <!-- SLIDE 4 — CRM vs TRACKT -->
+    <section class="slide" id="slide-4">
+      <div class="slide-inner top">
+        <div class="section-head">
+          <div class="eyebrow">Why Not Just Use A CRM</div>
+          <h2 class="headline">A CRM records what happened.<br>Trackt tells you what's about to.</h2>
+        </div>
+
+        <div class="table-wrap">
+          <div class="t-row t-head">
+            <div class="t-cell crm">Traditional CRM</div>
+            <div class="t-cell trackt">Trackt</div>
+          </div>
+
+          <div class="t-row">
+            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>Reports activity after the fact</div>
+            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Detects risk before it costs you</div>
+          </div>
+          <div class="t-row">
+            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>Tells you what happened</div>
+            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Tells you what's about to happen</div>
+          </div>
+          <div class="t-row">
+            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>Manual review required</div>
+            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Automated risk surfacing</div>
+          </div>
+          <div class="t-row">
+            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>No urgency signal</div>
+            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Risk-tiered alerts</div>
+          </div>
+          <div class="t-row">
+            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>Static records</div>
+            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Live relationship monitoring</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-meta">04 — CRM VS TRACKT</div>
+    </section>
+
+    <!-- SLIDE 5 — ARCHITECTURE -->
+    <section class="slide" id="slide-5">
+      <div class="slide-inner top">
+        <div class="section-head">
+          <div class="eyebrow">The System</div>
+          <h2 class="headline">Four layers. One protected pipeline.</h2>
+        </div>
+
+        <div class="layers">
+          <div class="layer layer-l4">
+            <div class="layer-label">
+              <span class="layer-tag">LAYER 4</span>
+              <span class="layer-name">Trackt Command Center &amp; Executive Dashboard</span>
+            </div>
+            <div class="layer-value">$17,000</div>
+          </div>
+          <div class="layer layer-l3">
+            <div class="layer-label">
+              <span class="layer-tag">LAYER 3</span>
+              <span class="layer-name">Outreach, Booking &amp; Accountability Automation</span>
+            </div>
+            <div class="layer-value">$14,500</div>
+          </div>
+          <div class="layer layer-l2">
+            <div class="layer-label">
+              <span class="layer-tag">LAYER 2</span>
+              <span class="layer-name">AI Follow-Up Protection Agents</span>
+            </div>
+            <div class="layer-value">$8,500</div>
+          </div>
+          <div class="layer layer-l1">
+            <div class="layer-label">
+              <span class="layer-tag">LAYER 1</span>
+              <span class="layer-name">Risk Audit &amp; Mapping</span>
+            </div>
+            <div class="layer-value">$6,000</div>
+          </div>
+
+          <div class="layers-total">
+            <span class="tt-label">Core System Value</span>
+            <span class="tt-value">$46,000</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-meta">05 — PROTECTION ARCHITECTURE</div>
+    </section>
+
+    <!-- SLIDE 6 — TIMELINE -->
+    <section class="slide" id="slide-6">
+      <div class="slide-inner top">
+        <div class="section-head">
+          <div class="eyebrow">The Rollout</div>
+          <h2 class="headline">Eight weeks to full protection.</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="week-block" style="background:#0C2A4D;"><span class="week-tag">WEEK 1</span><span class="week-title">Communication Blind Spot Elimination</span></div>
+          <div class="week-block" style="background:#133365;"><span class="week-tag">WEEK 2</span><span class="week-title">Relationship Risk Mapping</span></div>
+          <div class="week-block" style="background:#193C7D;"><span class="week-tag">WEEK 3</span><span class="week-title">Trackt Command Center</span></div>
+          <div class="week-block" style="background:#204595;"><span class="week-tag">WEEK 4</span><span class="week-title">AI Follow-Up Shield</span></div>
+          <div class="week-block" style="background:#274FAD;"><span class="week-tag">WEEK 5</span><span class="week-title">Referral Partner Protection</span></div>
+          <div class="week-block" style="background:#2E58C5;"><span class="week-tag">WEEK 6</span><span class="week-title">Revenue Recovery Engine</span></div>
+          <div class="week-block" style="background:#3461DD;"><span class="week-tag">WEEK 7</span><span class="week-title">Team Accountability Intelligence</span></div>
+          <div class="week-block" style="background:#3B6AF5;"><span class="week-tag">WEEK 8</span><span class="week-title">Relationship Revenue Command Center</span></div>
+        </div>
+      </div>
+      <div class="slide-meta">06 — 8 WEEK ROLLOUT</div>
+    </section>
+
+    <!-- SLIDE 7 — VALUE CHART -->
+    <section class="slide" id="slide-7">
+      <div class="slide-inner top">
+        <div class="section-head">
+          <div class="eyebrow">The Math</div>
+          <h2 class="headline">You're not paying for the value.<br>You're paying a fraction of it.</h2>
+        </div>
+
+        <div class="chart">
+          <div class="chart-col">
+            <span class="chart-value">$57,000+</span>
+            <div class="bar" style="height:260px;"></div>
+            <span class="chart-label">Total Perceived Value</span>
+          </div>
+          <div class="chart-col">
+            <span class="chart-value">$3,500</span>
+            <div class="bar dim" style="height:103px;"></div>
+            <span class="chart-label">One-Time Setup</span>
+          </div>
+          <div class="chart-col">
+            <span class="chart-value">$997/mo</span>
+            <div class="bar dim" style="height:55px;"></div>
+            <span class="chart-label">Monthly Subscription</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-meta">07 — VALUE STACK</div>
+    </section>
+
+    <!-- SLIDE 8 — PRICING + GUARANTEE -->
+    <section class="slide" id="slide-8">
+      <div class="slide-inner top">
+        <div class="section-head">
+          <div class="eyebrow">The Investment</div>
+          <h2 class="headline">Two payments. Full protection.</h2>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="price-card">
+            <span class="price-tag">One-Time Setup</span>
+            <span class="price-amount">$3,500</span>
+            <div class="price-list">
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Communication &amp; pipeline risk audit</span>
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Lead, client &amp; referral risk mapping</span>
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>AI follow-up protection agents</span>
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Outreach &amp; booking automation</span>
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Team accountability infrastructure</span>
+            </div>
+          </div>
+          <div class="price-card highlight">
+            <span class="price-tag">Monthly Protection · Powered by Trackt</span>
+            <span class="price-amount">$997/mo</span>
+            <div class="price-list">
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Trackt Communication Risk Dashboard</span>
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Live relationship monitoring</span>
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>AI agent oversight</span>
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Ongoing optimization</span>
+              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Revenue protection monitoring</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="guarantee-box">
+          <h4>Relationship Risk Detection Guarantee<span class="tm">TM</span></h4>
+          <p>If we cannot identify and surface communication risks, follow-up failures, and at-risk relationships within the first 30 days, we continue working at no cost until we do.</p>
+        </div>
+      </div>
+      <div class="slide-meta">08 — PRICING</div>
+    </section>
+
+    <!-- SLIDE 9 — CTA -->
+    <section class="slide" id="slide-9">
+      <div class="slide-inner">
+        <div class="cta-content">
+          <h2 class="cta-headline"><span class="accent">Protect</span> Revenue.<br><span class="accent">Protect</span> Referrals.<br><span class="accent">Protect</span> Reputation.</h2>
+          <p class="cta-sub">Book a 15-minute call to see exactly where your relationships are at risk.</p>
+          <a class="cta-btn" href="https://cal.com/tejasdesai/15min" target="_blank" rel="noopener">Book Your Call</a>
+          <div class="cta-footer">AARYX AI &nbsp;·&nbsp; Relationship Revenue Protection System<span class="tm">TM</span> &nbsp;·&nbsp; aaryxai.com</div>
+        </div>
+      </div>
+      <div class="slide-meta">09 — LET'S TALK</div>
+    </section>
+
+  </main>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.dot'));
+  var counter = document.querySelector('.slide-counter-num');
+  var deck = document.querySelector('.deck');
+
+  function setActive(index){
+    dots.forEach(function(d,i){ d.classList.toggle('active', i===index); });
+    if(counter){ counter.textContent = String(index+1).padStart(2,'0'); }
+  }
+
+  if('IntersectionObserver' in window){
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting && entry.intersectionRatio > 0.5){
+          var idx = slides.indexOf(entry.target);
+          if(idx > -1){ setActive(idx); }
+        }
+      });
+    }, { root: deck, threshold: [0.5] });
+    slides.forEach(function(s){ observer.observe(s); });
+  }
+
+  document.addEventListener('keydown', function(e){
+    var current = dots.findIndex(function(d){ return d.classList.contains('active'); });
+    if(current === -1){ current = 0; }
+    if(e.key === 'ArrowDown' || e.key === 'PageDown'){
+      e.preventDefault();
+      var next = Math.min(current+1, slides.length-1);
+      slides[next].scrollIntoView({behavior:'smooth'});
+    } else if(e.key === 'ArrowUp' || e.key === 'PageUp'){
+      e.preventDefault();
+      var prev = Math.max(current-1, 0);
+      slides[prev].scrollIntoView({behavior:'smooth'});
+    }
+  });
+
+  setActive(0);
+})();
+</script>
+</body>
+</html>
