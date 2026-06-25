@@ -1,1083 +1,2222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Aaryx AI — The Relationship Revenue Protection System</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#0C447C;
-    --bg:#050B16;
-    --bg-panel:#0A1A2E;
-    --bg-panel-2:#0F2238;
-    --blue:#3B6AF5;
-    --blue-soft:rgba(59,106,245,0.14);
-    --blue-border:rgba(59,106,245,0.35);
-    --white:#FFFFFF;
-    --muted:#AEC0D8;
-    --muted-dim:#6E83A0;
-    --red:#FF5C6C;
-    --red-soft:rgba(255,92,108,0.14);
-    --line:rgba(255,255,255,0.09);
-    --l1:#0C2A4D;
-    --l2:#1C3F85;
-    --l3:#2B55BD;
-    --l4:#3B6AF5;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aaryx AI + Trackt Pitch Deck</title>
+  <meta name="description" content="Aaryx AI pitch deck featuring Trackt as the flagship SaaS product." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #05070d;
+      --bg-2: #09101b;
+      --panel: rgba(13, 19, 32, 0.88);
+      --panel-2: rgba(15, 26, 44, 0.94);
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(59, 106, 245, 0.34);
+      --text: #f7faff;
+      --muted: #97a6c3;
+      --muted-2: #7786a3;
+      --blue: #3b6af5;
+      --blue-soft: rgba(59, 106, 245, 0.14);
+      --blue-glow: rgba(59, 106, 245, 0.32);
+      --teal: #00d4aa;
+      --teal-soft: rgba(0, 212, 170, 0.13);
+      --red: #ff4444;
+      --red-soft: rgba(255, 68, 68, 0.14);
+      --yellow: #ffd166;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.38);
+      --radius: 28px;
+      --radius-md: 20px;
+      --radius-sm: 14px;
+      --max: 1220px;
+    }
 
-  *{ box-sizing:border-box; margin:0; padding:0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  html,body{
-    height:100%;
-    background:var(--bg);
-    color:var(--white);
-    font-family:'Inter',sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
+    html, body {
+      height: 100%;
+      background:
+        radial-gradient(circle at top, rgba(59, 106, 245, 0.16), transparent 36%),
+        radial-gradient(circle at 82% 18%, rgba(0, 212, 170, 0.08), transparent 18%),
+        linear-gradient(180deg, #04060b 0%, #060912 100%);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow: hidden;
+    }
 
-  body::before{
-    content:'';
-    position:fixed;
-    inset:0;
-    background-image:radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size:30px 30px;
-    z-index:0;
-    pointer-events:none;
-  }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black 42%, transparent 88%);
+      opacity: 0.18;
+    }
 
-  .tm{ font-family:'Inter',sans-serif; font-weight:600; font-size:0.5em; vertical-align:super; letter-spacing:0; }
-  .accent{ color:var(--blue); }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  .eyebrow{
-    font-family:'Space Mono',monospace;
-    font-size:0.78rem;
-    font-weight:700;
-    letter-spacing:0.16em;
-    text-transform:uppercase;
-    color:var(--blue);
-    margin-bottom:1.1rem;
-  }
+    button {
+      font: inherit;
+      border: 0;
+      background: none;
+      color: inherit;
+      cursor: pointer;
+    }
 
-  .headline{
-    font-family:'Space Mono',monospace;
-    font-weight:700;
-    color:var(--white);
-    line-height:1.18;
-    font-size:clamp(1.55rem, 2.6vw, 2.35rem);
-    max-width:920px;
-  }
+    .mono {
+      font-family: 'Space Mono', monospace;
+    }
 
-  .sub{
-    font-family:'Inter',sans-serif;
-    color:var(--muted);
-    font-size:clamp(0.98rem, 1.2vw, 1.12rem);
-    line-height:1.65;
-    max-width:680px;
-    margin-top:1.1rem;
-  }
+    .deck {
+      position: relative;
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      z-index: 1;
+    }
 
-  /* ---------- Deck shell ---------- */
-  .deck{
-    position:relative;
-    z-index:1;
-    height:100vh;
-    overflow-y:scroll;
-    scroll-snap-type:y mandatory;
-    scroll-behavior:smooth;
-  }
+    .slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 70px 0 54px;
+      isolation: isolate;
+    }
 
-  .slide{
-    height:100vh;
-    width:100%;
-    scroll-snap-align:start;
-    scroll-snap-stop:always;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    overflow:hidden;
-  }
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 32px;
+      border-radius: 36px;
+      border: 1px solid rgba(255,255,255,0.04);
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0));
+      pointer-events: none;
+      z-index: -1;
+    }
 
-  .slide-inner{
-    position:relative;
-    z-index:2;
-    width:100%;
-    max-width:1180px;
-    margin:0 auto;
-    padding:clamp(20px,4vh,48px) clamp(24px,5vw,64px);
-    height:100%;
-    max-height:100%;
-    overflow-y:auto;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-  }
+    .slide-inner {
+      width: min(var(--max), calc(100vw - 64px));
+      min-height: calc(100vh - 132px);
+      border-radius: 34px;
+      padding: 54px 46px 98px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(180deg, rgba(10, 15, 26, 0.92), rgba(6, 10, 18, 0.88));
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
 
-  .slide-inner.top{ justify-content:flex-start; padding-top:clamp(44px,7.5vh,80px); }
+    .slide-inner::after {
+      content: '';
+      position: absolute;
+      inset: auto -15% -35% auto;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 106, 245, 0.14), transparent 68%);
+      filter: blur(10px);
+      pointer-events: none;
+    }
 
-  .slide-meta{
-    position:absolute;
-    bottom:28px;
-    left:clamp(24px,5vw,64px);
-    font-family:'Space Mono',monospace;
-    font-size:0.78rem;
-    color:var(--muted-dim);
-    letter-spacing:0.06em;
-    z-index:3;
-  }
+    .slide-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 28px;
+      padding-top: 8px;
+      position: relative;
+      z-index: 1;
+    }
 
-  /* ---------- Fixed chrome ---------- */
-  .brandmark{
-    position:fixed;
-    top:26px;
-    left:clamp(24px,5vw,64px);
-    z-index:50;
-    font-family:'Space Mono',monospace;
-    font-weight:700;
-    font-size:0.85rem;
-    letter-spacing:0.1em;
-    color:var(--white);
-  }
-  .brandmark span{ color:var(--blue); }
+    .eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
 
-  .deck-counter{
-    position:fixed;
-    bottom:28px;
-    right:clamp(24px,5vw,64px);
-    z-index:50;
-    font-family:'Space Mono',monospace;
-    font-size:0.85rem;
-    color:var(--muted);
-    letter-spacing:0.04em;
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .deck-counter b{ color:var(--white); }
+    h1, h2, h3, h4 {
+      font-family: 'Space Mono', monospace;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+    }
 
-  .dotnav{
-    position:fixed;
-    right:clamp(16px,3vw,30px);
-    top:50%;
-    transform:translateY(-50%);
-    z-index:50;
-    display:flex;
-    flex-direction:column;
-    gap:13px;
-  }
-  .dot{
-    width:9px;
-    height:9px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.18);
-    display:block;
-    cursor:pointer;
-    transition:background 200ms ease, transform 200ms ease;
-  }
-  .dot:hover{ background:rgba(255,255,255,0.4); }
-  .dot.active{ background:var(--blue); transform:scale(1.3); box-shadow:0 0 10px rgba(59,106,245,0.7); }
-  .dot:focus-visible{ outline:2px solid var(--blue); outline-offset:3px; }
+    h1 {
+      font-size: clamp(2.65rem, 5vw, 4.8rem);
+      max-width: 860px;
+    }
 
-  /* ---------- Slide 1 : HERO ---------- */
-  #slide-1{ background:radial-gradient(circle at 50% 38%, #0E2342 0%, #050B16 72%); }
+    h2 {
+      font-size: clamp(1.7rem, 2.8vw, 2.8rem);
+      max-width: 760px;
+    }
 
-  .radar{
-    position:absolute;
-    top:38%;
-    left:50%;
-    width:10px;
-    height:10px;
-    z-index:1;
-    pointer-events:none;
-  }
-  .radar .ring{
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:10px;
-    height:10px;
-    border:1.5px solid var(--blue);
-    border-radius:50%;
-    transform:translate(-50%,-50%);
-    opacity:0;
-    animation:radarPulse 4.5s ease-out infinite;
-  }
-  .radar .r2{ animation-delay:1.1s; }
-  .radar .r3{ animation-delay:2.2s; }
-  .radar .r4{ animation-delay:3.3s; }
-  .radar .core{
-    position:absolute; top:50%; left:50%;
-    width:9px; height:9px; border-radius:50%;
-    background:var(--blue);
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 26px 8px rgba(59,106,245,0.55);
-  }
-  @keyframes radarPulse{
-    0%{ width:10px; height:10px; opacity:0.85; border-width:2px; }
-    65%{ opacity:0.16; }
-    100%{ width:960px; height:960px; opacity:0; border-width:1px; }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .radar .ring{ animation:none; opacity:0.12; width:340px; height:340px; }
-  }
+    h3 {
+      font-size: 1.08rem;
+      line-height: 1.2;
+    }
 
-  .hero-content{ position:relative; z-index:2; text-align:center; display:flex; flex-direction:column; align-items:center; }
-  .hero-content .eyebrow{ margin-bottom:1.6rem; }
-  .hero-content .headline{
-    font-size:clamp(2.1rem, 5vw, 3.7rem);
-    max-width:880px;
-  }
-  .hero-content .sub{ max-width:600px; margin-left:auto; margin-right:auto; }
-  .founder-line{
-    margin-top:2.6rem;
-    font-family:'Inter',sans-serif;
-    font-size:0.92rem;
-    color:var(--muted-dim);
-    padding-top:1.4rem;
-    border-top:1px solid var(--line);
-  }
+    p {
+      color: var(--muted);
+      line-height: 1.58;
+      font-size: 1rem;
+    }
 
-  /* ---------- Slide 2 : PROBLEM ---------- */
-  .pipeline-wrap{ margin-top:1.7rem; width:100%; }
-  .pipe-svg{ width:100%; height:auto; display:block; }
-  .leak-dot{
-    position:absolute;
-    width:14px; height:14px;
-    border-radius:50%;
-    background:var(--red);
-    box-shadow:0 0 0 6px var(--red-soft);
-    animation:leakPulse 2.4s ease-in-out infinite;
-  }
-  @keyframes leakPulse{
-    0%,100%{ box-shadow:0 0 0 5px var(--red-soft); }
-    50%{ box-shadow:0 0 0 10px var(--red-soft); }
-  }
-  @media (prefers-reduced-motion: reduce){ .leak-dot{ animation:none; } }
+    .lede {
+      max-width: 680px;
+      font-size: 1.08rem;
+      margin-top: 14px;
+    }
 
-  .leak-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:1.1rem;
-  }
-  .leak-card{
-    background:var(--bg-panel);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:1.1rem 1.4rem;
-  }
-  .leak-card .leak-title{
-    font-family:'Space Mono',monospace;
-    font-size:0.92rem;
-    font-weight:700;
-    color:var(--red);
-    margin-bottom:0.55rem;
-  }
-  .leak-card .leak-desc{
-    font-size:0.92rem;
-    color:var(--muted);
-    line-height:1.55;
-  }
+    .slide-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: rgba(9, 17, 32, 0.72);
+      color: var(--text);
+      font-size: 0.86rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
 
-  /* ---------- Slide 3 : ICP ---------- */
-  .icp-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin-top:1.5rem;
-  }
-  .icp-card{
-    background:var(--bg-panel);
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:1.5rem 1.6rem;
-  }
-  .icp-icon{
-    width:38px; height:38px;
-    color:var(--blue);
-    margin-bottom:1rem;
-  }
-  .icp-card h3{
-    font-family:'Space Mono',monospace;
-    font-size:1.05rem;
-    margin-bottom:0.7rem;
-  }
-  .icp-card p{
-    font-size:0.92rem;
-    color:var(--muted);
-    line-height:1.6;
-  }
-  .icp-footer{
-    margin-top:1.4rem;
-    text-align:center;
-    font-family:'Space Mono',monospace;
-    font-size:0.82rem;
-    color:var(--muted-dim);
-    letter-spacing:0.03em;
-    padding-top:1rem;
-    border-top:1px solid var(--line);
-  }
+    .slide-kicker .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 6px rgba(0,212,170,0.09);
+    }
 
-  /* ---------- Slide 4 : CRM vs TRACKT ---------- */
-  .table-wrap{
-    margin-top:1.4rem;
-    border:1px solid var(--line);
-    border-radius:16px;
-    overflow:hidden;
-  }
-  .t-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-  }
-  .t-head .t-cell{
-    font-family:'Space Mono',monospace;
-    font-weight:700;
-    font-size:0.92rem;
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-    padding:0.8rem 1.6rem;
-  }
-  .t-head .crm{ background:var(--bg-panel-2); color:var(--muted); }
-  .t-head .trackt{ background:var(--blue); color:var(--white); }
-  .t-row:not(.t-head):nth-child(even){ background:rgba(255,255,255,0.018); }
-  .t-cell{
-    padding:0.78rem 1.6rem;
-    font-size:0.92rem;
-    line-height:1.4;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    border-top:1px solid var(--line);
-  }
-  .t-cell.crm{ color:var(--muted); }
-  .t-cell.trackt{ color:var(--white); font-weight:500; background:var(--blue-soft); }
-  .t-icon{ width:18px; height:18px; flex-shrink:0; }
-  .t-icon.dash{ color:var(--muted-dim); }
-  .t-icon.check{ color:var(--blue); }
+    .meta {
+      position: absolute;
+      left: 46px;
+      bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted-2);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
 
-  /* ---------- Slide 5 : ARCHITECTURE ---------- */
-  .layers{ margin-top:1.4rem; display:flex; flex-direction:column; gap:10px; }
-  .layer{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:1.5rem;
-    padding:1.1rem 2.1rem;
-    border-radius:14px;
-    border:1px solid var(--blue-border);
-  }
-  .layer-l1{ background:var(--l1); }
-  .layer-l2{ background:var(--l2); }
-  .layer-l3{ background:var(--l3); }
-  .layer-l4{ background:var(--l4); }
-  .layer-label{ display:flex; flex-direction:column; gap:0.3rem; }
-  .layer-tag{
-    font-family:'Space Mono',monospace;
-    font-size:0.72rem;
-    letter-spacing:0.1em;
-    color:rgba(255,255,255,0.65);
-  }
-  .layer-name{ font-size:0.98rem; font-weight:600; color:var(--white); }
-  .layer-value{
-    font-family:'Space Mono',monospace;
-    font-weight:700;
-    font-size:clamp(1.1rem,1.8vw,1.45rem);
-    color:var(--white);
-    flex-shrink:0;
-    padding-left:1.5rem;
-    white-space:nowrap;
-  }
-  .layers-total{
-    margin-top:6px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0.85rem 2.1rem;
-    border-top:2px solid var(--blue);
-  }
-  .layers-total .tt-label{ font-family:'Space Mono',monospace; font-size:0.85rem; letter-spacing:0.06em; color:var(--muted); text-transform:uppercase; }
-  .layers-total .tt-value{ font-family:'Space Mono',monospace; font-weight:700; font-size:clamp(1.3rem,2.2vw,1.7rem); color:var(--blue); padding-left:1.5rem; }
+    .meta-logo {
+      height: 24px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.95;
+    }
 
-  /* ---------- Slide 6 : TIMELINE ---------- */
-  .timeline{
-    margin-top:1.5rem;
-    display:grid;
-    grid-template-columns:repeat(8,1fr);
-    gap:10px;
-  }
-  .week-block{
-    border-radius:12px;
-    padding:0.9rem 0.65rem;
-    min-height:170px;
-    display:flex;
-    flex-direction:column;
-    gap:0.6rem;
-  }
-  .week-tag{
-    font-family:'Space Mono',monospace;
-    font-size:0.7rem;
-    font-weight:700;
-    letter-spacing:0.06em;
-    color:rgba(255,255,255,0.75);
-  }
-  .week-title{
-    font-size:clamp(0.7rem,0.9vw,0.8rem);
-    line-height:1.38;
-    font-weight:600;
-    color:var(--white);
-    overflow-wrap:break-word;
-  }
-  @media (max-width:860px){ .timeline{ grid-template-columns:repeat(4,1fr); } }
-  @media (max-width:560px){ .timeline{ grid-template-columns:repeat(2,1fr); } }
+    .deck-topbar {
+      position: fixed;
+      top: 18px;
+      left: 24px;
+      right: 24px;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      pointer-events: none;
+    }
 
-  /* ---------- Slide 7 : BONUS STACK ---------- */
-  .bonus-grid{
-    margin-top:1.4rem;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-  }
-  .bonus-card{
-    background:var(--bg-panel);
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:1.25rem 1.5rem;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:1rem;
-  }
-  .bonus-card.highlight{
-    background:var(--blue-soft);
-    border-color:var(--blue-border);
-  }
-  .bonus-copy{
-    display:flex;
-    flex-direction:column;
-    gap:0.3rem;
-  }
-  .bonus-name{
-    font-family:'Space Mono',monospace;
-    font-size:0.92rem;
-    font-weight:700;
-    color:var(--white);
-    line-height:1.4;
-  }
-  .bonus-label{
-    font-size:0.82rem;
-    color:var(--muted-dim);
-    letter-spacing:0.04em;
-    text-transform:uppercase;
-  }
-  .bonus-value{
-    font-family:'Space Mono',monospace;
-    font-size:1.05rem;
-    font-weight:700;
-    color:var(--blue);
-    white-space:nowrap;
-    flex-shrink:0;
-  }
-  .bonus-totals{
-    margin-top:1.2rem;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-  }
-  .bonus-total-card{
-    background:var(--bg-panel-2);
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:1.1rem 1.5rem;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:1rem;
-  }
-  .bonus-total-card strong{
-    font-family:'Space Mono',monospace;
-    font-size:1.15rem;
-    color:var(--white);
-  }
-  .bonus-total-card .label{
-    font-family:'Space Mono',monospace;
-    font-size:0.82rem;
-    letter-spacing:0.06em;
-    color:var(--muted);
-    text-transform:uppercase;
-  }
-  .bonus-total-card .value{
-    font-family:'Space Mono',monospace;
-    font-size:1.2rem;
-    font-weight:700;
-    color:var(--blue);
-    white-space:nowrap;
-  }
+    .deck-brand,
+    .deck-counter,
+    .deck-actions,
+    .dotnav {
+      pointer-events: auto;
+    }
 
-  /* ---------- Slide 8 : VALUE CHART ---------- */
-  .chart{
-    margin-top:1.3rem;
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    gap:clamp(24px,5vw,64px);
-    height:360px;
-  }
-  .chart-col{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:flex-end;
-    height:100%;
-    width:200px;
-  }
-  .chart-value{
-    font-family:'Space Mono',monospace;
-    font-weight:700;
-    font-size:clamp(1.05rem,1.8vw,1.35rem);
-    color:var(--white);
-    margin-bottom:14px;
-    white-space:nowrap;
-  }
-  .bar{
-    width:108px;
-    border-radius:10px 10px 0 0;
-    background:linear-gradient(180deg,var(--blue),#1E3E96);
-  }
-  .bar.dim{ background:linear-gradient(180deg,#26406F,#142A52); }
-  .chart-label{
-    margin-top:16px;
-    font-size:0.88rem;
-    color:var(--muted);
-    text-align:center;
-    line-height:1.4;
-    max-width:190px;
-  }
+    .deck-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(6, 11, 20, 0.78);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
 
-  /* ---------- Slide 9 : PRICING ---------- */
-  .pricing-grid{
-    margin-top:1.4rem;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:22px;
-  }
-  .price-card{
-    background:var(--bg-panel);
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:1.5rem 1.9rem;
-    display:flex;
-    flex-direction:column;
-  }
-  .price-card.highlight{ border-color:var(--blue-border); background:var(--blue-soft); }
-  .price-tag{
-    font-family:'Space Mono',monospace;
-    font-size:0.78rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--blue);
-    margin-bottom:0.6rem;
-  }
-  .price-amount{
-    font-family:'Space Mono',monospace;
-    font-weight:700;
-    font-size:clamp(1.7rem,2.8vw,2.2rem);
-    color:var(--white);
-    margin-bottom:0.9rem;
-    padding-right:0.4rem;
-  }
-  .price-list{ display:flex; flex-direction:column; gap:0.5rem; margin-top:0.2rem; }
-  .price-list .item{ display:flex; align-items:flex-start; gap:10px; font-size:0.9rem; color:var(--muted); line-height:1.45; }
-  .price-list .item svg{ width:16px; height:16px; flex-shrink:0; margin-top:2px; color:var(--blue); }
+    .deck-brand img {
+      height: 22px;
+      width: auto;
+      object-fit: contain;
+    }
 
-  .guarantee-box{
-    margin-top:14px;
-    border-left:4px solid var(--blue);
-    background:var(--bg-panel-2);
-    border-radius:0 14px 14px 0;
-    padding:1.1rem 1.7rem;
-  }
-  .guarantee-box h4{
-    font-family:'Space Mono',monospace;
-    font-size:0.98rem;
-    margin-bottom:0.4rem;
-    color:var(--white);
-  }
-  .guarantee-box p{ font-size:0.9rem; color:var(--muted); line-height:1.6; }
+    .deck-brand span {
+      color: var(--muted);
+      font-size: 0.77rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
 
-  /* ---------- Slide 10 : CTA ---------- */
-  #slide-10{ background:radial-gradient(circle at 50% 30%, #0E2342 0%, #050B16 70%); }
-  .cta-content{ text-align:center; display:flex; flex-direction:column; align-items:center; }
-  .cta-headline{
-    font-family:'Space Mono',monospace;
-    font-weight:700;
-    font-size:clamp(1.9rem,4.6vw,3.3rem);
-    line-height:1.28;
-  }
-  .cta-sub{ margin-top:1.4rem; color:var(--muted); font-size:1.05rem; max-width:560px; }
-  .cta-btn{
-    margin-top:2.4rem;
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    background:var(--blue);
-    color:var(--white);
-    font-weight:700;
-    font-size:1rem;
-    padding:1rem 2.1rem;
-    border-radius:10px;
-    text-decoration:none;
-    cursor:pointer;
-    transition:transform 180ms ease, box-shadow 180ms ease;
-    min-height:44px;
-  }
-  .cta-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 30px rgba(59,106,245,0.35); }
-  .cta-btn:focus-visible{ outline:2px solid var(--white); outline-offset:3px; }
-  .cta-footer{
-    margin-top:3rem;
-    padding-top:1.4rem;
-    border-top:1px solid var(--line);
-    font-size:0.85rem;
-    color:var(--muted-dim);
-  }
+    .deck-counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(6, 11, 20, 0.78);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
 
-  /* ---------- shared section heading block spacing ---------- */
-  .section-head{ margin-bottom:0.4rem; }
+    .deck-counter strong {
+      color: var(--text);
+      font-weight: 700;
+    }
 
-  @media (max-width:760px){
-    .icp-grid, .pricing-grid, .leak-grid, .bonus-grid, .bonus-totals{ grid-template-columns:1fr; }
-    .t-row{ grid-template-columns:1fr; }
-    .t-head .crm{ display:none; }
-  }
-</style>
+    .dotnav {
+      position: fixed;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dotnav button {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid transparent;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .dotnav button.active {
+      transform: scale(1.26);
+      background: var(--blue);
+      box-shadow: 0 0 0 6px rgba(59,106,245,0.16);
+    }
+
+    .deck-actions {
+      position: fixed;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+      z-index: 60;
+      display: flex;
+      gap: 10px;
+      background: rgba(6, 11, 20, 0.82);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      padding: 6px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .nav-btn:hover,
+    .dotnav button:hover,
+    .button:hover,
+    .cta-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .nav-btn:hover {
+      background: rgba(59,106,245,0.18);
+    }
+
+    .nav-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button,
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-weight: 600;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .button.primary,
+    .cta-link.primary {
+      border-color: rgba(59,106,245,0.42);
+      background: linear-gradient(180deg, rgba(59,106,245,0.28), rgba(59,106,245,0.18));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 10px 26px rgba(59,106,245,0.22);
+    }
+
+    .button.teal,
+    .cta-link.teal {
+      border-color: rgba(0,212,170,0.42);
+      background: linear-gradient(180deg, rgba(0,212,170,0.22), rgba(0,212,170,0.12));
+    }
+
+    .button.ghost {
+      background: rgba(255,255,255,0.01);
+      color: var(--muted);
+    }
+
+    .muted-label {
+      font-size: 0.84rem;
+      color: var(--muted-2);
+      margin-top: 14px;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      background: linear-gradient(180deg, rgba(12, 18, 31, 0.92), rgba(8, 13, 24, 0.9));
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+      min-width: 0;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li,
+    .metric-copy,
+    .tiny,
+    .risk-note {
+      font-size: 0.95rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .pill.red {
+      background: var(--red-soft);
+      color: #ffb1b1;
+      border-color: rgba(255,68,68,0.22);
+    }
+
+    .pill.teal {
+      background: var(--teal-soft);
+      color: #9ff5e5;
+      border-color: rgba(0,212,170,0.22);
+    }
+
+    .pill.blue {
+      background: var(--blue-soft);
+      color: #cfe0ff;
+      border-color: rgba(59,106,245,0.24);
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .list li {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      color: var(--muted);
+      align-items: flex-start;
+    }
+
+    .list li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 6px rgba(59,106,245,0.09);
+    }
+
+    .hero-slide {
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      background:
+        radial-gradient(circle at 50% 32%, rgba(59,106,245,0.22), transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(59,106,245,0.08), transparent 54%);
+    }
+
+    .hero-slide .slide-inner {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 132px;
+    }
+
+    .hero-logo {
+      height: 56px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 28px;
+    }
+
+    .hero-tag {
+      margin-top: 22px;
+      color: var(--muted-2);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .hero-stack {
+      display: grid;
+      gap: 16px;
+      place-items: center;
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-stack p {
+      max-width: 680px;
+      font-size: 1.08rem;
+    }
+
+    .hero-rings {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 16px;
+      height: 16px;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-rings span {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      border-radius: 50%;
+      border: 1px solid rgba(59,106,245,0.26);
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-rings span:nth-child(1) { width: 220px; height: 220px; }
+    .hero-rings span:nth-child(2) { width: 420px; height: 420px; }
+    .hero-rings span:nth-child(3) { width: 640px; height: 640px; }
+    .hero-rings span:nth-child(4) { width: 860px; height: 860px; opacity: 0.55; }
+
+    .hero-rings i {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--blue);
+      box-shadow: 0 0 0 10px rgba(59,106,245,0.1), 0 0 28px var(--blue-glow);
+    }
+
+    .brand-bridge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-top: 26px;
+    }
+
+    .brand-bridge strong {
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+    }
+
+    .brand-bridge span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .gmail-shell {
+      display: grid;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .gmail-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(8, 13, 24, 0.78);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .gmail-icons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .gmail-icons span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.14);
+    }
+
+    .email-card {
+      display: grid;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: linear-gradient(180deg, rgba(14, 20, 34, 0.96), rgba(8, 13, 24, 0.96));
+    }
+
+    .email-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .email-top strong {
+      display: block;
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+
+    .email-top span,
+    .email-snippet small {
+      color: var(--muted-2);
+      font-size: 0.84rem;
+    }
+
+    .email-subject {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .email-snippet {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+    }
+
+    .formula-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+      margin-top: 30px;
+    }
+
+    .formula-card {
+      padding: 24px 22px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(11, 18, 31, 0.94), rgba(8, 12, 21, 0.94));
+      border: 1px solid rgba(255,255,255,0.07);
+      display: grid;
+      gap: 10px;
+      position: relative;
+    }
+
+    .formula-card strong {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
+    .formula-card label {
+      color: var(--muted-2);
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .formula-card.highlight {
+      border-color: rgba(255,68,68,0.34);
+      background: linear-gradient(180deg, rgba(41, 13, 18, 0.92), rgba(21, 8, 11, 0.96));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 16px 40px rgba(255,68,68,0.14);
+    }
+
+    .formula-x {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted-2);
+      font-family: 'Space Mono', monospace;
+      font-size: 1.3rem;
+    }
+
+    .formula-note {
+      margin-top: 18px;
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255,68,68,0.08);
+      border: 1px solid rgba(255,68,68,0.16);
+      color: #ffb0b0;
+    }
+
+    .flow-board {
+      display: grid;
+      grid-template-columns: 1.05fr 0.2fr 1.05fr 0.2fr 1.1fr 0.2fr 1.1fr;
+      gap: 0;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .flow-card {
+      min-height: 220px;
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: linear-gradient(180deg, rgba(13, 19, 31, 0.96), rgba(8, 13, 24, 0.96));
+      display: grid;
+      gap: 12px;
+    }
+
+    .flow-card.mail { box-shadow: inset 0 0 0 1px rgba(59,106,245,0.12); }
+    .flow-card.calendar { box-shadow: inset 0 0 0 1px rgba(0,212,170,0.1); }
+    .flow-card.ai { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04); }
+    .flow-card.briefing { box-shadow: inset 0 0 0 1px rgba(59,106,245,0.16); }
+
+    .flow-card ul {
+      display: grid;
+      gap: 8px;
+      list-style: none;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .flow-card ul li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .flow-card ul li::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      margin-top: 7px;
+      opacity: 0.45;
+    }
+
+    .flow-card.mail ul li::before,
+    .flow-arrow.blue { color: var(--blue); }
+    .flow-card.calendar ul li::before,
+    .flow-arrow.teal { color: var(--teal); }
+
+    .flow-arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--muted-2);
+      font-size: 1.5rem;
+      opacity: 0.85;
+    }
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+      position: relative;
+    }
+
+    .journey::before {
+      content: '';
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 43px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(59,106,245,0.1), rgba(59,106,245,0.65), rgba(0,212,170,0.35));
+      z-index: 0;
+    }
+
+    .journey-card {
+      position: relative;
+      z-index: 1;
+      padding: 20px 18px 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: linear-gradient(180deg, rgba(12, 18, 31, 0.95), rgba(9, 14, 24, 0.95));
+      display: grid;
+      gap: 12px;
+    }
+
+    .journey-step {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(59,106,245,0.32), rgba(59,106,245,0.16));
+      border: 1px solid rgba(59,106,245,0.38);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.96rem;
+    }
+
+    .split-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 28px;
+    }
+
+    .signal-box {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: linear-gradient(180deg, rgba(12, 19, 33, 0.96), rgba(8, 13, 22, 0.96));
+      display: grid;
+      gap: 16px;
+    }
+
+    .signal-box header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .signal-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 1rem;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .signal-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .signal-item {
+      padding: 14px 14px 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+      display: grid;
+      gap: 6px;
+    }
+
+    .signal-item strong {
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .risk-app {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 18px;
+    }
+
+    .mirror-card {
+      padding: 24px;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(17, 12, 18, 0.98), rgba(10, 12, 20, 0.98));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 20px 40px rgba(0,0,0,0.28);
+      display: grid;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mirror-card::after {
+      content: '';
+      position: absolute;
+      inset: auto -50px -60px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,68,68,0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .risk-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .risk-head .pill {
+      margin-bottom: 10px;
+    }
+
+    .evidence,
+    .mirror-side {
+      display: grid;
+      gap: 12px;
+    }
+
+    .evidence-card,
+    .side-card,
+    .dashboard-card,
+    .metric-card,
+    .audience-card,
+    .roadmap-card,
+    .pricing-card {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+      padding: 16px;
+    }
+
+    .evidence-card strong,
+    .dashboard-list strong,
+    .pricing-price,
+    .roadmap-title {
+      color: var(--text);
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .reply-box {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(59,106,245,0.09);
+      border: 1px solid rgba(59,106,245,0.18);
+      color: #d7e4ff;
+      line-height: 1.58;
+    }
+
+    .dashboard-shell {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 18px;
+    }
+
+    .dashboard-main,
+    .dashboard-side {
+      display: grid;
+      gap: 16px;
+    }
+
+    .bucket-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .bucket {
+      padding: 18px;
+      border-radius: 20px;
+      min-height: 228px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: linear-gradient(180deg, rgba(12, 18, 31, 0.95), rgba(8, 13, 24, 0.95));
+    }
+
+    .bucket.at-risk { border-color: rgba(255,68,68,0.18); }
+    .bucket.attention { border-color: rgba(59,106,245,0.18); }
+    .bucket.waiting { border-color: rgba(0,212,170,0.18); }
+
+    .bucket h3 {
+      font-size: 1rem;
+    }
+
+    .dashboard-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dashboard-list .item {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+      display: grid;
+      gap: 7px;
+    }
+
+    .dashboard-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric-card strong {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 1.5rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .audience-layout {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+
+    .audience-primary {
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(12, 19, 33, 0.98), rgba(8, 13, 23, 0.98));
+      border: 1px solid rgba(59,106,245,0.18);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+      display: grid;
+      gap: 18px;
+    }
+
+    .audience-primary h3 {
+      font-size: clamp(1.55rem, 2.2vw, 2.3rem);
+      max-width: 520px;
+    }
+
+    .audience-panel {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .audience-card {
+      display: grid;
+      gap: 8px;
+      min-height: 118px;
+    }
+
+    .pricing-layout {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1.16fr 0.84fr;
+      gap: 18px;
+    }
+
+    .pricing-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .pricing-card {
+      padding: 20px;
+      display: grid;
+      gap: 12px;
+      background: linear-gradient(180deg, rgba(12, 18, 31, 0.96), rgba(8, 13, 24, 0.96));
+    }
+
+    .pricing-card.highlight {
+      border-color: rgba(59,106,245,0.38);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 16px 34px rgba(59,106,245,0.14);
+      position: relative;
+    }
+
+    .pricing-card.highlight::before {
+      content: 'Professional';
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: 'Space Mono', monospace;
+      color: #dce8ff;
+      background: rgba(59,106,245,0.18);
+      border: 1px solid rgba(59,106,245,0.24);
+    }
+
+    .pricing-tier {
+      color: var(--muted-2);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .pricing-price {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.86rem;
+      line-height: 1;
+    }
+
+    .pricing-price small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted-2);
+      font-size: 0.84rem;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+    }
+
+    .pricing-side {
+      display: grid;
+      gap: 16px;
+    }
+
+    .pricing-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .pricing-summary strong {
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.96rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .pricing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(59,106,245,0.18);
+      background: rgba(59,106,245,0.08);
+      color: #dce8ff;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .pricing-bands {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pricing-band {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .roadmap-grid {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      position: relative;
+    }
+
+    .roadmap-grid::before {
+      content: '';
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      top: 52px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(0,212,170,0.65), rgba(59,106,245,0.65), rgba(255,255,255,0.18));
+      z-index: 0;
+    }
+
+    .roadmap-card {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 12px;
+      background: linear-gradient(180deg, rgba(12, 19, 33, 0.95), rgba(8, 13, 22, 0.95));
+      min-height: 250px;
+    }
+
+    .roadmap-node {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Mono', monospace;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .roadmap-card.complete .roadmap-node {
+      background: rgba(0,212,170,0.16);
+      border-color: rgba(0,212,170,0.32);
+      color: #9ff5e5;
+    }
+
+    .roadmap-card.live .roadmap-node {
+      background: rgba(59,106,245,0.16);
+      border-color: rgba(59,106,245,0.32);
+      color: #d8e5ff;
+    }
+
+    .roadmap-title {
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+
+    .ask-slide .slide-inner {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 120px;
+      background:
+        radial-gradient(circle at top, rgba(59,106,245,0.18), transparent 34%),
+        linear-gradient(180deg, rgba(9, 15, 27, 0.94), rgba(6, 10, 19, 0.94));
+    }
+
+    .ask-logo {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+      margin: 0 auto 24px;
+    }
+
+    .ask-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      width: 100%;
+      max-width: 980px;
+    }
+
+    .ask-card {
+      padding: 22px 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+      display: grid;
+      gap: 10px;
+      min-height: 176px;
+      align-content: start;
+      text-align: left;
+    }
+
+    .ask-card h3 {
+      font-size: 1rem;
+    }
+
+    .url-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.84rem;
+      margin-top: 14px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1180px) {
+      .slide-inner {
+        width: min(var(--max), calc(100vw - 40px));
+        padding: 46px 34px 92px;
+      }
+
+      .flow-board,
+      .risk-app,
+      .dashboard-shell,
+      .audience-layout,
+      .pricing-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-board {
+        gap: 12px;
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+        min-height: 18px;
+      }
+
+      .journey,
+      .formula-strip,
+      .roadmap-grid,
+      .ask-grid,
+      .bucket-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .journey::before,
+      .roadmap-grid::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 860px) {
+      html, body {
+        overflow: auto;
+      }
+
+      .deck {
+        overflow: visible;
+        height: auto;
+      }
+
+      .slide {
+        min-height: auto;
+        padding: 84px 0 30px;
+      }
+
+      .slide::before {
+        inset: 14px 10px;
+        border-radius: 28px;
+      }
+
+      .slide-inner {
+        width: calc(100vw - 20px);
+        min-height: auto;
+        padding: 36px 18px 78px;
+        border-radius: 26px;
+      }
+
+      .meta {
+        left: 18px;
+        bottom: 18px;
+        gap: 10px;
+        font-size: 0.68rem;
+      }
+
+      .meta-logo {
+        height: 20px;
+      }
+
+      .deck-topbar {
+        top: 8px;
+        left: 10px;
+        right: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .deck-brand,
+      .deck-counter {
+        padding: 8px 10px;
+      }
+
+      .deck-brand span {
+        display: none;
+      }
+
+      .dotnav {
+        display: none;
+      }
+
+      .deck-actions {
+        bottom: 10px;
+      }
+
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .formula-strip,
+      .journey,
+      .split-wrap,
+      .bucket-row,
+      .metric-grid,
+      .audience-panel,
+      .pricing-grid,
+      .roadmap-grid,
+      .ask-grid,
+      .evidence-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-board {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+        min-height: 16px;
+      }
+
+      .gmail-bar,
+      .slide-head,
+      .dashboard-top,
+      .risk-head,
+      .signal-box header,
+      .pricing-band,
+      .pricing-summary {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-logo {
+        height: 48px;
+      }
+
+      .ask-logo {
+        height: 38px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .deck,
+      .nav-btn,
+      .button,
+      .cta-link,
+      .dotnav button {
+        scroll-behavior: auto;
+        transition: none;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="deck-topbar" aria-hidden="false">
+    <div class="deck-brand">
+      <img src="assets/aaryxai_horizontal_logo.png" alt="Aaryx AI" />
+      <span>Aaryx AI / Trackt Pitch Deck</span>
+    </div>
+    <div class="deck-counter"><strong id="currentSlide">01</strong> / <span id="totalSlides">12</span></div>
+  </div>
 
-  <div class="brandmark">AARYX<span>·</span>AI</div>
+  <div class="dotnav" id="dotnav" aria-label="Slide navigation"></div>
 
-  <nav class="dotnav" aria-label="Slide navigation">
-    <a href="#slide-1" class="dot active" aria-label="Slide 1"></a>
-    <a href="#slide-2" class="dot" aria-label="Slide 2"></a>
-    <a href="#slide-3" class="dot" aria-label="Slide 3"></a>
-    <a href="#slide-4" class="dot" aria-label="Slide 4"></a>
-    <a href="#slide-5" class="dot" aria-label="Slide 5"></a>
-    <a href="#slide-6" class="dot" aria-label="Slide 6"></a>
-    <a href="#slide-7" class="dot" aria-label="Slide 7"></a>
-    <a href="#slide-8" class="dot" aria-label="Slide 8"></a>
-    <a href="#slide-9" class="dot" aria-label="Slide 9"></a>
-    <a href="#slide-10" class="dot" aria-label="Slide 10"></a>
-  </nav>
+  <div class="deck-actions" aria-label="Previous and next slide controls">
+    <button class="nav-btn" id="prevBtn" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" /></svg>
+    </button>
+    <button class="nav-btn" id="nextBtn" aria-label="Next slide">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
+    </button>
+  </div>
 
-  <div class="deck-counter"><b class="slide-counter-num">01</b> / 10</div>
-
-  <main class="deck">
-
-    <!-- SLIDE 1 — HERO -->
-    <section class="slide" id="slide-1">
-      <div class="radar" aria-hidden="true">
-        <span class="ring r1"></span>
-        <span class="ring r2"></span>
-        <span class="ring r3"></span>
-        <span class="ring r4"></span>
-        <span class="core"></span>
-      </div>
+  <main class="deck" id="deck">
+    <section class="slide hero-slide" id="slide-1" data-title="Cover">
       <div class="slide-inner">
-        <div class="hero-content">
-          <div class="eyebrow">AARYX AI</div>
-          <h1 class="headline">The Relationship<br>Revenue Protection System<span class="tm">TM</span></h1>
-          <p class="sub">Never let a hot lead, a client relationship, or a referral partner fall through the cracks again.</p>
-          <p class="founder-line">Built by a licensed REALTOR with 25+ years of operational business experience.</p>
+        <div class="hero-rings" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><i></i>
         </div>
+        <div class="hero-stack">
+          <img class="hero-logo" src="assets/aaryxai_horizontal_logo.png" alt="Aaryx AI" />
+          <div class="slide-kicker"><span class="dot"></span><span>Trackt is the flagship SaaS product</span></div>
+          <h1>Every morning. Everything that matters.</h1>
+          <p>
+            Aaryx AI is building the operating layer for relationship-driven businesses.
+            Trackt is the first product in that stack.
+          </p>
+          <div class="brand-bridge">
+            <strong>Trackt</strong>
+            <span>Communication risk intelligence for professionals who live in email.</span>
+          </div>
+          <div class="button-row" role="group" aria-label="Cover calls to action">
+            <a class="button primary" href="https://trackt-landing.vercel.app/index.html" target="_blank" rel="noopener noreferrer">View waitlist</a>
+            <a class="button ghost" href="#slide-10">See pricing</a>
+          </div>
+          <div class="hero-tag">An Aaryx AI Product</div>
+          <div class="url-display">usetrackt.app</div>
+        </div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>01 / Cover</span></div>
       </div>
-      <div class="slide-meta">AARYX AI / RELATIONSHIP REVENUE PROTECTION SYSTEM</div>
     </section>
 
-    <!-- SLIDE 2 — PROBLEM -->
-    <section class="slide" id="slide-2">
-      <div class="slide-inner top">
-        <div class="section-head">
-          <div class="eyebrow">The Problem</div>
-          <h2 class="headline">Most businesses don't lose deals to marketing.<br>They lose them to <span class="accent">communication breakdown.</span></h2>
-          <p class="sub">By the time the owner notices, the relationship is already gone.</p>
-        </div>
-
-        <div class="pipeline-wrap">
-          <svg class="pipe-svg" viewBox="0 0 1100 130" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Diagram of a pipeline with three fracture points leaking revenue">
-            <defs>
-              <linearGradient id="pipeGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#0C2A4D"/>
-                <stop offset="100%" stop-color="#3B6AF5"/>
-              </linearGradient>
-            </defs>
-            <rect x="30" y="48" width="1040" height="34" rx="17" fill="url(#pipeGrad)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-            <!-- fracture marks -->
-            <g stroke="#FF5C6C" stroke-width="2.4" stroke-linecap="round">
-              <path d="M183 46 L 175 65 L 191 65 L 183 84"/>
-              <path d="M550 46 L 542 65 L 558 65 L 550 84"/>
-              <path d="M917 46 L 909 65 L 925 65 L 917 84"/>
-            </g>
-          </svg>
-          <span class="leak-dot" style="left:16.66%; top:78px;"></span>
-          <span class="leak-dot" style="left:50%; top:78px;"></span>
-          <span class="leak-dot" style="left:83.33%; top:78px;"></span>
-        </div>
-
-        <div class="leak-grid">
-          <div class="leak-card">
-            <div class="leak-title">LEAD LEAK</div>
-            <div class="leak-desc">Leads slip through the cracks with no one noticing until they're gone.</div>
-          </div>
-          <div class="leak-card">
-            <div class="leak-title">REFERRAL LEAK</div>
-            <div class="leak-desc">Referral partners quietly disengage and stop sending business.</div>
-          </div>
-          <div class="leak-card">
-            <div class="leak-title">CLIENT LEAK</div>
-            <div class="leak-desc">Communication breakdowns go unnoticed until the client is already gone.</div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-meta">02 — THE PROBLEM</div>
-    </section>
-
-    <!-- SLIDE 3 — ICP -->
-    <section class="slide" id="slide-3">
-      <div class="slide-inner top">
-        <div class="section-head">
-          <div class="eyebrow">Who This Protects</div>
-          <h2 class="headline">Built for relationship-driven revenue.</h2>
-        </div>
-
-        <div class="icp-grid">
-          <div class="icp-card">
-            <svg class="icp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9.5h13V10"/><path d="M9.5 19.5v-6h5v6"/>
-            </svg>
-            <h3>Real Estate Teams</h3>
-            <p>Buyer leads, seller leads, and referral partners go cold while no one is watching.</p>
-          </div>
-          <div class="icp-card">
-            <svg class="icp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9.5 12 4l9 5.5"/><path d="M4.5 9.5h15V20h-15z"/><path d="M8 9.5V20M12 9.5V20M16 9.5V20"/><path d="M3 20h18"/>
-            </svg>
-            <h3>Mortgage Brokerages</h3>
-            <p>Loan applications stall and realtor relationships cool off mid-pipeline.</p>
-          </div>
-          <div class="icp-card">
-            <svg class="icp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3.5 19.5 6.5V12c0 5-3.5 7.7-7.5 9-4-1.3-7.5-4-7.5-9V6.5z"/><path d="M9 12l2.2 2.2L15.5 9.8"/>
-            </svg>
-            <h3>Insurance Agencies</h3>
-            <p>Renewals and cross-sell opportunities get missed every single cycle.</p>
-          </div>
-        </div>
-
-        <div class="icp-footer">5–50 EMPLOYEES &nbsp;·&nbsp; ACTIVE LEAD FLOW &nbsp;·&nbsp; RELATIONSHIP-DEPENDENT REVENUE</div>
-      </div>
-      <div class="slide-meta">03 — ICP</div>
-    </section>
-
-    <!-- SLIDE 4 — CRM vs TRACKT -->
-    <section class="slide" id="slide-4">
-      <div class="slide-inner top">
-        <div class="section-head">
-          <div class="eyebrow">Why Not Just Use A CRM</div>
-          <h2 class="headline">A CRM records what happened.<br>Trackt tells you what's about to.</h2>
-        </div>
-
-        <div class="table-wrap">
-          <div class="t-row t-head">
-            <div class="t-cell crm">Traditional CRM</div>
-            <div class="t-cell trackt">Trackt</div>
-          </div>
-
-          <div class="t-row">
-            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>Reports activity after the fact</div>
-            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Detects risk before it costs you</div>
-          </div>
-          <div class="t-row">
-            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>Tells you what happened</div>
-            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Tells you what's about to happen</div>
-          </div>
-          <div class="t-row">
-            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>Manual review required</div>
-            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Automated risk surfacing</div>
-          </div>
-          <div class="t-row">
-            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>No urgency signal</div>
-            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Risk-tiered alerts</div>
-          </div>
-          <div class="t-row">
-            <div class="t-cell crm"><svg class="t-icon dash" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h12"/></svg>Static records</div>
-            <div class="t-cell trackt"><svg class="t-icon check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Live relationship monitoring</div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-meta">04 — CRM VS TRACKT</div>
-    </section>
-
-    <!-- SLIDE 5 — ARCHITECTURE -->
-    <section class="slide" id="slide-5">
-      <div class="slide-inner top">
-        <div class="section-head">
-          <div class="eyebrow">The System</div>
-          <h2 class="headline">Four layers. One protected pipeline.</h2>
-        </div>
-
-        <div class="layers">
-          <div class="layer layer-l4">
-            <div class="layer-label">
-              <span class="layer-tag">LAYER 4</span>
-              <span class="layer-name">Trackt Command Center &amp; Executive Dashboard</span>
-            </div>
-            <div class="layer-value">$17,000</div>
-          </div>
-          <div class="layer layer-l3">
-            <div class="layer-label">
-              <span class="layer-tag">LAYER 3</span>
-              <span class="layer-name">Outreach, Booking &amp; Accountability Automation</span>
-            </div>
-            <div class="layer-value">$14,500</div>
-          </div>
-          <div class="layer layer-l2">
-            <div class="layer-label">
-              <span class="layer-tag">LAYER 2</span>
-              <span class="layer-name">AI Follow-Up Protection Agents</span>
-            </div>
-            <div class="layer-value">$8,500</div>
-          </div>
-          <div class="layer layer-l1">
-            <div class="layer-label">
-              <span class="layer-tag">LAYER 1</span>
-              <span class="layer-name">Risk Audit &amp; Mapping</span>
-            </div>
-            <div class="layer-value">$6,000</div>
-          </div>
-
-          <div class="layers-total">
-            <span class="tt-label">Core System Value</span>
-            <span class="tt-value">$46,000</span>
-          </div>
-        </div>
-      </div>
-      <div class="slide-meta">05 — PROTECTION ARCHITECTURE</div>
-    </section>
-
-    <!-- SLIDE 6 — TIMELINE -->
-    <section class="slide" id="slide-6">
-      <div class="slide-inner top">
-        <div class="section-head">
-          <div class="eyebrow">The Rollout</div>
-          <h2 class="headline">Eight weeks to full protection.</h2>
-        </div>
-
-        <div class="timeline">
-          <div class="week-block" style="background:#0C2A4D;"><span class="week-tag">WEEK 1</span><span class="week-title">Communication Blind Spot Elimination</span></div>
-          <div class="week-block" style="background:#133365;"><span class="week-tag">WEEK 2</span><span class="week-title">Relationship Risk Mapping</span></div>
-          <div class="week-block" style="background:#193C7D;"><span class="week-tag">WEEK 3</span><span class="week-title">Trackt Command Center</span></div>
-          <div class="week-block" style="background:#204595;"><span class="week-tag">WEEK 4</span><span class="week-title">AI Follow-Up Shield</span></div>
-          <div class="week-block" style="background:#274FAD;"><span class="week-tag">WEEK 5</span><span class="week-title">Referral Partner Protection</span></div>
-          <div class="week-block" style="background:#2E58C5;"><span class="week-tag">WEEK 6</span><span class="week-title">Revenue Recovery Engine</span></div>
-          <div class="week-block" style="background:#3461DD;"><span class="week-tag">WEEK 7</span><span class="week-title">Team Accountability Intelligence</span></div>
-          <div class="week-block" style="background:#3B6AF5;"><span class="week-tag">WEEK 8</span><span class="week-title">Relationship Revenue Command Center</span></div>
-        </div>
-      </div>
-      <div class="slide-meta">06 — 8 WEEK ROLLOUT</div>
-    </section>
-
-    <!-- SLIDE 7 — BONUS STACK -->
-    <section class="slide" id="slide-7">
-      <div class="slide-inner top">
-        <div class="section-head">
-          <div class="eyebrow">THE BONUS STACK</div>
-          <h2 class="headline">And that's before the bonuses.</h2>
-        </div>
-
-        <div class="bonus-grid">
-          <div class="bonus-card highlight">
-            <div class="bonus-copy">
-              <span class="bonus-label">Bonus 1</span>
-              <span class="bonus-name">Relationship Revenue Leak Assessment</span>
-            </div>
-            <span class="bonus-value">$2,500</span>
-          </div>
-          <div class="bonus-card">
-            <div class="bonus-copy">
-              <span class="bonus-label">Bonus 2</span>
-              <span class="bonus-name">Referral Partner Retention Playbook</span>
-            </div>
-            <span class="bonus-value">$1,500</span>
-          </div>
-          <div class="bonus-card">
-            <div class="bonus-copy">
-              <span class="bonus-label">Bonus 3</span>
-              <span class="bonus-name">AI Follow-Up Templates Library</span>
-            </div>
-            <span class="bonus-value">$2,000</span>
-          </div>
-          <div class="bonus-card">
-            <div class="bonus-copy">
-              <span class="bonus-label">Bonus 4</span>
-              <span class="bonus-name">Communication Rescue Campaigns</span>
-            </div>
-            <span class="bonus-value">$2,500</span>
-          </div>
-          <div class="bonus-card" style="grid-column:1 / -1;">
-            <div class="bonus-copy">
-              <span class="bonus-label">Bonus 5</span>
-              <span class="bonus-name">90 Day Executive Optimization Review</span>
-            </div>
-            <span class="bonus-value">$2,500</span>
-          </div>
-        </div>
-
-        <div class="bonus-totals">
-          <div class="bonus-total-card">
-            <div>
-              <div class="label">Bonus Stack</div>
-              <strong>Included extras</strong>
-            </div>
-            <div class="value">$11,000</div>
-          </div>
-          <div class="bonus-total-card">
-            <div>
-              <div class="label">Total Perceived Value</div>
-              <strong>With bonuses included</strong>
-            </div>
-            <div class="value">$57,000+</div>
-          </div>
-        </div>
-      </div>
-      <div class="slide-meta">07 — THE BONUS STACK</div>
-    </section>
-
-    <!-- SLIDE 8 — VALUE CHART -->
-    <section class="slide" id="slide-8">
-      <div class="slide-inner top">
-        <div class="section-head">
-          <div class="eyebrow">The Math</div>
-          <h2 class="headline">You're not paying for the value.<br>You're paying a fraction of it.</h2>
-        </div>
-
-        <div class="chart">
-          <div class="chart-col">
-            <span class="chart-value">$57,000+</span>
-            <div class="bar" style="height:260px;"></div>
-            <span class="chart-label">Total Perceived Value</span>
-          </div>
-          <div class="chart-col">
-            <span class="chart-value">$3,500</span>
-            <div class="bar dim" style="height:103px;"></div>
-            <span class="chart-label">One-Time Setup</span>
-          </div>
-          <div class="chart-col">
-            <span class="chart-value">$997/mo</span>
-            <div class="bar dim" style="height:55px;"></div>
-            <span class="chart-label">Monthly Subscription</span>
-          </div>
-        </div>
-      </div>
-      <div class="slide-meta">08 — VALUE STACK</div>
-    </section>
-
-    <!-- SLIDE 9 — PRICING + GUARANTEE -->
-    <section class="slide" id="slide-9">
-      <div class="slide-inner top">
-        <div class="section-head">
-          <div class="eyebrow">The Investment</div>
-          <h2 class="headline">Two payments. Full protection.</h2>
-        </div>
-
-        <div class="pricing-grid">
-          <div class="price-card">
-            <span class="price-tag">One-Time Setup</span>
-            <span class="price-amount">$3,500</span>
-            <div class="price-list">
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Communication &amp; pipeline risk audit</span>
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Lead, client &amp; referral risk mapping</span>
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>AI follow-up protection agents</span>
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Outreach &amp; booking automation</span>
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Team accountability infrastructure</span>
-            </div>
-          </div>
-          <div class="price-card highlight">
-            <span class="price-tag">Monthly Protection · Powered by Trackt</span>
-            <span class="price-amount">$997/mo</span>
-            <div class="price-list">
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Trackt Communication Risk Dashboard</span>
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Live relationship monitoring</span>
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>AI agent oversight</span>
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Ongoing optimization</span>
-              <span class="item"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10.5l4 4 8-9"/></svg>Revenue protection monitoring</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="guarantee-box">
-          <h4>Relationship Risk Detection Guarantee<span class="tm">TM</span></h4>
-          <p>If we cannot identify and surface communication risks, follow-up failures, and at-risk relationships within the first 30 days, we continue working at no cost until we do.</p>
-        </div>
-      </div>
-      <div class="slide-meta">09 — PRICING</div>
-    </section>
-
-    <!-- SLIDE 10 — CTA -->
-    <section class="slide" id="slide-10">
+    <section class="slide" id="slide-2" data-title="The Problem">
       <div class="slide-inner">
-        <div class="cta-content">
-          <h2 class="cta-headline"><span class="accent">Protect</span> Revenue.<br><span class="accent">Protect</span> Referrals.<br><span class="accent">Protect</span> Reputation.</h2>
-          <p class="cta-sub">Book a 15-minute call to see exactly where your relationships are at risk.</p>
-          <a class="cta-btn" href="https://cal.com/tejasdesai/15min" target="_blank" rel="noopener">Book Your Call</a>
-          <div class="cta-footer">AARYX AI &nbsp;·&nbsp; Relationship Revenue Protection System<span class="tm">TM</span> &nbsp;·&nbsp; aaryxai.com</div>
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">The Problem</div>
+            <h2>Your next missed follow-up is already sitting in Gmail.</h2>
+            <p class="lede">The issue is not effort. It is visibility. Promises, follow-ups, questions, and deadlines disappear inside threads until the relationship has already taken the hit.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>Real workflow pressure. Not a theoretical pain point.</span></div>
         </div>
+
+        <div class="gmail-shell">
+          <div class="gmail-bar">
+            <div class="gmail-icons"><span></span><span></span><span></span></div>
+            <span>Inbox / commitments / what gets buried</span>
+            <span>Gmail-style thread view</span>
+          </div>
+
+          <div class="grid-3">
+            <article class="email-card">
+              <div class="email-top">
+                <div>
+                  <strong>Sarah Mitchell</strong>
+                  <span>Client</span>
+                </div>
+                <span>6 days ago</span>
+              </div>
+              <div class="email-snippet">
+                <div class="email-subject">Re: Proposal follow-up</div>
+                <p>"I'll send the revised proposal by Friday so you can review before the weekend."</p>
+                <small>No follow-up sent.</small>
+              </div>
+            </article>
+
+            <article class="email-card">
+              <div class="email-top">
+                <div>
+                  <strong>Jordan Hayes</strong>
+                  <span>Candidate</span>
+                </div>
+                <span>4 days ago</span>
+              </div>
+              <div class="email-snippet">
+                <div class="email-subject">Interview feedback</div>
+                <p>"Following up to see if there are any updates from the team after Tuesday's interview."</p>
+                <small>No reply. Momentum fading.</small>
+              </div>
+            </article>
+
+            <article class="email-card">
+              <div class="email-top">
+                <div>
+                  <strong>Priya Shah</strong>
+                  <span>Prospect</span>
+                </div>
+                <span>Tomorrow</span>
+              </div>
+              <div class="email-snippet">
+                <div class="email-subject">Tomorrow's meeting prep</div>
+                <p>Meeting is on the calendar. The prep email, agenda, and next-step reminder were never sent.</p>
+                <small>Preventable. Invisible until too late.</small>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>02 / The Problem</span></div>
       </div>
-      <div class="slide-meta">10 — LET'S TALK</div>
     </section>
 
+    <section class="slide" id="slide-3" data-title="The Cost">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">The Cost</div>
+            <h2>Communication leakage is revenue leakage.</h2>
+            <p class="lede">If follow-up lives in memory, the cost compounds quietly. This is the math the owner usually never sees.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>Simple formula. Expensive outcome.</span></div>
+        </div>
+
+        <div class="formula-strip" aria-label="Revenue leak formula">
+          <div class="formula-card">
+            <label>Missed follow-ups</label>
+            <strong>5 / month</strong>
+            <p>Small misses. Normal month. Nobody notices in real time.</p>
+          </div>
+          <div class="formula-x" aria-hidden="true">×</div>
+          <div class="formula-card">
+            <label>Close rate</label>
+            <strong>20%</strong>
+            <p>Only one in five needed to convert to make the damage real.</p>
+          </div>
+          <div class="formula-x" aria-hidden="true">×</div>
+          <div class="formula-card">
+            <label>Avg placement fee</label>
+            <strong>$8,000</strong>
+            <p>Applies cleanly to recruiter economics and other relationship-led service work.</p>
+          </div>
+          <div class="formula-x" aria-hidden="true">=</div>
+          <div class="formula-card highlight">
+            <label>Leaking every month</label>
+            <strong>$8,000</strong>
+            <p>Not because demand is weak. Because follow-through is invisible.</p>
+          </div>
+        </div>
+
+        <div class="formula-note">Trackt is designed to surface these misses before they become write-offs.</div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>03 / The Cost</span></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-4" data-title="The Solution">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">The Solution</div>
+            <h2>Trackt turns scattered signals into a clean morning command layer.</h2>
+            <p class="lede">Instead of asking the user to manage another system, Trackt reads the systems they already use, scores what matters, and delivers a daily operational view before the day starts.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>Gmail → Calendar → AI → Morning Briefing</span></div>
+        </div>
+
+        <div class="flow-board">
+          <article class="flow-card mail">
+            <div class="pill blue">Gmail</div>
+            <h3>Email intelligence source</h3>
+            <ul>
+              <li>Promises made in threads</li>
+              <li>Unanswered questions</li>
+              <li>Cold follow-ups</li>
+            </ul>
+          </article>
+          <div class="flow-arrow blue">→</div>
+          <article class="flow-card calendar">
+            <div class="pill teal">Calendar</div>
+            <h3>Context and timing layer</h3>
+            <ul>
+              <li>Upcoming meetings</li>
+              <li>Missing prep messages</li>
+              <li>Renewals and check-ins</li>
+            </ul>
+          </article>
+          <div class="flow-arrow">→</div>
+          <article class="flow-card ai">
+            <div class="pill">AI Engine</div>
+            <h3>Risk scoring and detection</h3>
+            <ul>
+              <li>Prioritizes urgency</li>
+              <li>Explains what happened</li>
+              <li>Drafts the next move</li>
+            </ul>
+          </article>
+          <div class="flow-arrow">→</div>
+          <article class="flow-card briefing">
+            <div class="pill blue">Morning Briefing</div>
+            <h3>What matters before work starts</h3>
+            <ul>
+              <li>At Risk</li>
+              <li>Needs Attention</li>
+              <li>Waiting on Others</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>04 / The Solution</span></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-5" data-title="How It Works">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">How It Works</div>
+            <h2>Simple onboarding. High-leverage output.</h2>
+            <p class="lede">The product does not ask the user to rebuild workflow habits. It plugs into existing behavior and starts surfacing risk immediately.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>Premium horizontal onboarding journey</span></div>
+        </div>
+
+        <div class="journey">
+          <article class="journey-card">
+            <div class="journey-step">01</div>
+            <h3>Connect Gmail + Calendar</h3>
+            <p>Secure account connection. No manual data entry. No CRM migration project.</p>
+          </article>
+
+          <article class="journey-card">
+            <div class="journey-step">02</div>
+            <h3>Choose your briefing window</h3>
+            <p>Trackt fits the morning routine. The briefing arrives before the day fragments attention.</p>
+          </article>
+
+          <article class="journey-card">
+            <div class="journey-step">03</div>
+            <h3>Trackt scans live communication</h3>
+            <p>Email and calendar signals are translated into risk, urgency, and recommended next action.</p>
+          </article>
+
+          <article class="journey-card">
+            <div class="journey-step">04</div>
+            <h3>Act in one screen</h3>
+            <p>Review what changed, copy the suggested reply, and keep the relationship moving.</p>
+          </article>
+        </div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>05 / How It Works</span></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-6" data-title="What Trackt Detects">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">What Trackt Detects</div>
+            <h2>Email intelligence and calendar intelligence in one view.</h2>
+            <p class="lede">This is not another inbox helper. It is a risk detection layer across communication and time.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>Split by signal source</span></div>
+        </div>
+
+        <div class="split-wrap">
+          <section class="signal-box">
+            <header>
+              <div>
+                <div class="pill blue">Email Intelligence</div>
+                <h3 style="margin-top:10px;">What the inbox reveals</h3>
+              </div>
+              <div class="signal-icon">E</div>
+            </header>
+            <div class="signal-stack">
+              <article class="signal-item"><strong>Promises made</strong><p>"I'll send that by Friday" with no fulfillment signal after the deadline.</p></article>
+              <article class="signal-item"><strong>Questions unanswered</strong><p>Client asks that were acknowledged mentally but never answered in-thread.</p></article>
+              <article class="signal-item"><strong>Follow-ups missed</strong><p>Warm opportunities going cold because no next touch happened.</p></article>
+              <article class="signal-item"><strong>Waiting on others</strong><p>Threads where the other side committed to something and the follow-up timing now matters.</p></article>
+            </div>
+          </section>
+
+          <section class="signal-box">
+            <header>
+              <div>
+                <div class="pill teal">Calendar Intelligence</div>
+                <h3 style="margin-top:10px;">What timing exposes</h3>
+              </div>
+              <div class="signal-icon">C</div>
+            </header>
+            <div class="signal-stack">
+              <article class="signal-item"><strong>Missing prep emails</strong><p>Meetings on the calendar with no supporting message or agenda sent.</p></article>
+              <article class="signal-item"><strong>Post-meeting action gaps</strong><p>Calls happened, but the promised recap or next step never went out.</p></article>
+              <article class="signal-item"><strong>Renewals and check-ins</strong><p>Relationship milestones approaching without the expected outreach.</p></article>
+              <article class="signal-item"><strong>Deadline proximity</strong><p>What is about to break trust soon, not just what broke it already.</p></article>
+            </div>
+          </section>
+        </div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>06 / What Trackt Detects</span></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-7" data-title="The Accountability Mirror">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">The Accountability Mirror</div>
+            <h2>Trackt shows the exact commitment that is damaging trust right now.</h2>
+            <p class="lede">This is where the product stops being a digest and becomes an operational accountability layer.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>Designed as a real SaaS risk card</span></div>
+        </div>
+
+        <div class="risk-app">
+          <article class="mirror-card">
+            <div class="risk-head">
+              <div>
+                <div class="pill red">At Risk / High confidence</div>
+                <h3 style="font-size:1.55rem; margin-top:12px;">You said: “I'll have the Q4 report to you by end of day Friday.”</h3>
+              </div>
+              <div class="pill">Overdue / 3 days</div>
+            </div>
+
+            <div class="evidence-grid">
+              <div class="evidence-card">
+                <strong>What happened</strong>
+                <p>The commitment was made in email. No report was sent. No explanatory reply followed.</p>
+              </div>
+              <div class="evidence-card">
+                <strong>Why it matters</strong>
+                <p>Sarah Mitchell is still waiting. The silence creates doubt more than the delay itself.</p>
+              </div>
+              <div class="evidence-card">
+                <strong>Risk impact</strong>
+                <p>Client trust is actively decaying. Relationship temperature is now moving in the wrong direction.</p>
+              </div>
+              <div class="evidence-card">
+                <strong>What to do next</strong>
+                <p>Send the update now. Own the miss. Reset the expectation before the client has to ask again.</p>
+              </div>
+            </div>
+
+            <div class="reply-box">
+              Suggested reply: Sarah, I owe you an update here. I missed the Friday commitment. I'm finishing the report now and will have it to you by 3 PM today. Thank you for your patience.
+            </div>
+          </article>
+
+          <div class="mirror-side">
+            <article class="side-card">
+              <div class="pill">Commitment evidence</div>
+              <p style="margin-top:10px;">Quoted directly from the thread. Timestamped. No ambiguity about what was promised.</p>
+            </article>
+            <article class="side-card">
+              <div class="pill">Confidence score</div>
+              <p style="margin-top:10px;">High confidence is part of the UX. It tells the user the AI is not guessing blindly.</p>
+            </article>
+            <article class="side-card">
+              <div class="pill">Close the loop</div>
+              <p style="margin-top:10px;">Detection and action happen in the same interface. No extra tool hopping.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>07 / The Accountability Mirror</span></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-8" data-title="The Dashboard">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">The Dashboard</div>
+            <h2>A believable executive view of relationship risk.</h2>
+            <p class="lede">Trackt is not organized like a task list. It is organized like a control tower. The user sees where risk sits, what changed, and where action belongs next.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>At Risk / Needs Attention / Waiting on Others</span></div>
+        </div>
+
+        <div class="dashboard-shell">
+          <div class="dashboard-main">
+            <div class="dashboard-card">
+              <div class="dashboard-top">
+                <div>
+                  <div class="pill">Executive dashboard</div>
+                  <h3 style="margin-top:10px;">Daily relationship risk command center</h3>
+                </div>
+                <div class="pill teal">7:00 AM briefing ready</div>
+              </div>
+            </div>
+
+            <div class="bucket-row">
+              <article class="bucket at-risk">
+                <div class="pill red">At Risk</div>
+                <div class="dashboard-list">
+                  <div class="item"><strong>Proposal still unsent</strong><p>Client waiting 6 days. Suggested reply ready.</p></div>
+                  <div class="item"><strong>Review call recap missing</strong><p>Meeting happened. No next-step email sent.</p></div>
+                </div>
+              </article>
+
+              <article class="bucket attention">
+                <div class="pill blue">Needs Attention</div>
+                <div class="dashboard-list">
+                  <div class="item"><strong>Interview feedback thread cooling</strong><p>4 days of silence. Candidate risk rising.</p></div>
+                  <div class="item"><strong>Question left open</strong><p>Prospect asked about start date. No answer yet.</p></div>
+                </div>
+              </article>
+
+              <article class="bucket waiting">
+                <div class="pill teal">Waiting on Others</div>
+                <div class="dashboard-list">
+                  <div class="item"><strong>Client promised docs</strong><p>Follow-up window opens tomorrow.</p></div>
+                  <div class="item"><strong>Referral partner update pending</strong><p>Nudge timing suggested for Thursday morning.</p></div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="dashboard-side">
+            <div class="metric-grid">
+              <article class="metric-card"><strong>12</strong><p class="metric-copy">Active commitments being monitored</p></article>
+              <article class="metric-card"><strong>4</strong><p class="metric-copy">High-confidence risks requiring action</p></article>
+              <article class="metric-card"><strong>3</strong><p class="metric-copy">Calendar-linked blind spots surfaced</p></article>
+              <article class="metric-card"><strong>2m</strong><p class="metric-copy">Estimated time to triage the morning</p></article>
+            </div>
+            <article class="dashboard-card">
+              <div class="pill">Why it wins</div>
+              <div class="list" style="margin-top:14px;">
+                <li>Live risk framing instead of digest framing</li>
+                <li>Confidence on every surfaced item</li>
+                <li>Suggested replies anchored in thread context</li>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>08 / The Dashboard</span></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-9" data-title="Who It's For">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">Who It's For</div>
+            <h2>Independent recruiters first. Then every relationship-driven operator with inbox risk.</h2>
+            <p class="lede">The first wedge is deliberate. Recruiters feel the pain immediately. The broader use case expands cleanly across any business where follow-through drives revenue and trust.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>Primary ICP with supporting expansion cards</span></div>
+        </div>
+
+        <div class="audience-layout">
+          <article class="audience-primary">
+            <div class="pill blue">Primary ICP</div>
+            <h3>Independent Recruiters</h3>
+            <p>Every placement depends on timing, follow-up, candidate momentum, and client trust. Dropped communication is not a nuisance. It is lost revenue.</p>
+            <div class="list">
+              <li>High volume of client and candidate threads</li>
+              <li>Missed touches directly affect placements</li>
+              <li>Strong willingness to pay for better follow-through</li>
+            </div>
+          </article>
+
+          <div class="audience-panel">
+            <article class="audience-card"><div class="pill">Consultants</div><p>Your reputation is your pipeline. Silence costs future work.</p></article>
+            <article class="audience-card"><div class="pill">Freelancers</div><p>One missed reply can lose the client while you are heads-down delivering.</p></article>
+            <article class="audience-card"><div class="pill">Mortgage Brokers</div><p>Fast-moving borrower, agent, and document workflows create constant follow-up exposure.</p></article>
+            <article class="audience-card"><div class="pill">Insurance Agents</div><p>Renewals, quote requests, and referrals depend on staying ahead of communication decay.</p></article>
+          </div>
+        </div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>09 / Who It's For</span></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-10" data-title="Pricing">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">Pricing</div>
+            <h2>Trackt stays product-led. Aaryx AI DFY sits above it.</h2>
+            <p class="lede">The deck keeps the product and implementation paths separate on purpose. One is software. The other is the premium done-for-you layer.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>Professional tier highlighted</span></div>
+        </div>
+
+        <div class="pricing-layout">
+          <div class="pricing-stack">
+            <article class="dashboard-card">
+              <div class="pill">Trackt SaaS</div>
+              <h3 style="margin-top:12px;">Founding member tiers</h3>
+              <p style="margin-top:10px;">Early access pricing is designed to validate usage fast, keep adoption friction low, and make the jump to Professional obvious for power users.</p>
+              <div class="pricing-summary">
+                <div>
+                  <strong>Product-led entry point</strong>
+                  <p>Use <span class="mono">usetrackt.app</span> to capture waitlist demand now.</p>
+                </div>
+                <div class="pricing-badge">First 100 members / founding pricing</div>
+              </div>
+            </article>
+
+            <div class="pricing-grid">
+              <article class="pricing-card">
+                <div class="pricing-tier">Starter</div>
+                <div class="pricing-price">$14.99<span class="sr-only"> per month</span><small>Founding / was $29 per month</small></div>
+                <div class="list">
+                  <li>Single workflow view</li>
+                  <li>Morning briefing</li>
+                  <li>Core risk detection</li>
+                </div>
+              </article>
+
+              <article class="pricing-card highlight">
+                <div class="pricing-tier">Professional</div>
+                <div class="pricing-price">$49.99<span class="sr-only"> per month</span><small>Founding / was $97 per month</small></div>
+                <div class="list">
+                  <li>Everything in Starter</li>
+                  <li>Multiple email accounts</li>
+                  <li>Calendar cross-referencing</li>
+                  <li>Advanced reply support</li>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="pricing-side">
+            <article class="pricing-card">
+              <div class="pill teal">Aaryx AI DFY</div>
+              <h3 style="margin-top:12px;">Premium implementation path</h3>
+              <div class="pricing-price">$500 + $297<small>$500 setup + $297/month for teams and agencies</small></div>
+              <div class="list">
+                <li>Done-for-you workflow setup</li>
+                <li>Custom operating layer support</li>
+                <li>Built for owners who want execution, not just software</li>
+              </div>
+            </article>
+
+            <article class="pricing-card">
+              <div class="pill">AI Blueprint</div>
+              <p style="margin-top:10px;">Discovery process for the DFY path. Use it to diagnose where follow-through and communication are costing revenue before implementation begins.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>10 / Pricing</span></div>
+      </div>
+    </section>
+
+    <section class="slide" id="slide-11" data-title="Roadmap">
+      <div class="slide-inner">
+        <div class="slide-head">
+          <div>
+            <div class="eyebrow">Roadmap</div>
+            <h2>The sequence is disciplined on purpose.</h2>
+            <p class="lede">Foundation is complete. Validation comes next. Then the real product layers get turned on in order, without bloating the build before the core intelligence is proven.</p>
+          </div>
+          <div class="slide-kicker"><span class="dot"></span><span>Build order follows product truth, not feature temptation</span></div>
+        </div>
+
+        <div class="roadmap-grid">
+          <article class="roadmap-card complete">
+            <div class="roadmap-node">01</div>
+            <div class="roadmap-title">Foundation complete</div>
+            <p>Frontend deck, dashboard framing, modal logic, and product experience direction are already established.</p>
+          </article>
+
+          <article class="roadmap-card live">
+            <div class="roadmap-node">02</div>
+            <div class="roadmap-title">Validate now</div>
+            <p>Waitlist, early users, and pain validation come before feature expansion.</p>
+          </article>
+
+          <article class="roadmap-card">
+            <div class="roadmap-node">03</div>
+            <div class="roadmap-title">Gmail OAuth</div>
+            <p>Replace the fake connection flow with real account access and live threads.</p>
+          </article>
+
+          <article class="roadmap-card">
+            <div class="roadmap-node">04</div>
+            <div class="roadmap-title">AI Intelligence</div>
+            <p>Production analysis engine returning structured detected items and suggested replies.</p>
+          </article>
+
+          <article class="roadmap-card">
+            <div class="roadmap-node">05</div>
+            <div class="roadmap-title">Calendar / Mobile App</div>
+            <p>Calendar cross-referencing deepens the signal. Mobile delivery sharpens daily utility.</p>
+          </article>
+        </div>
+
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>11 / Roadmap</span></div>
+      </div>
+    </section>
+
+    <section class="slide ask-slide" id="slide-12" data-title="The Ask">
+      <div class="slide-inner">
+        <img class="ask-logo" src="assets/aaryxai_horizontal_logo.png" alt="Aaryx AI" />
+        <div class="eyebrow">The Ask</div>
+        <h2 style="max-width:860px;">Trackt is the flagship SaaS. Aaryx AI is the builder behind it. The next step is simple.</h2>
+        <p class="lede" style="max-width:720px; margin-left:auto; margin-right:auto;">Join the early access list. Put a recruiter friend in the room. Or talk to Aaryx AI about the DFY path and the AI Blueprint discovery process.</p>
+        <div class="url-display">usetrackt.app</div>
+
+        <div class="ask-grid">
+          <article class="ask-card">
+            <div class="pill blue">Trackt</div>
+            <h3>Join waitlist</h3>
+            <p>See the product path. Lock in early access. Help shape what gets built next.</p>
+            <a class="cta-link primary" href="https://trackt-landing.vercel.app/index.html" target="_blank" rel="noopener noreferrer">Go to waitlist</a>
+          </article>
+
+          <article class="ask-card">
+            <div class="pill teal">Network</div>
+            <h3>Refer a recruiter friend</h3>
+            <p>The wedge is tight for a reason. Recruiters feel this pain in cash terms immediately.</p>
+            <a class="cta-link teal" href="https://trackt-landing.vercel.app/index.html" target="_blank" rel="noopener noreferrer">Share Trackt</a>
+          </article>
+
+          <article class="ask-card">
+            <div class="pill">Aaryx AI</div>
+            <h3>Talk to us about DFY / AI Blueprint</h3>
+            <p>For teams that want the full implementation path, not just the software layer.</p>
+            <a class="cta-link" href="https://aaryx-ai-blueprint-landing.vercel.app/index.html" target="_blank" rel="noopener noreferrer">Start with AI Blueprint</a>
+          </article>
+        </div>
+
+        <div class="muted-label">Aaryx AI = parent company / builder. Trackt = flagship SaaS product. Aaryx AI DFY = premium implementation path.</div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>12 / The Ask</span></div>
+      </div>
+    </section>
   </main>
 
-<script>
-(function(){
-  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  var dots = Array.prototype.slice.call(document.querySelectorAll('.dot'));
-  var counter = document.querySelector('.slide-counter-num');
-  var deck = document.querySelector('.deck');
+  <script>
+    const deck = document.getElementById('deck');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const currentSlideEl = document.getElementById('currentSlide');
+    const totalSlidesEl = document.getElementById('totalSlides');
+    const dotnav = document.getElementById('dotnav');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-  function setActive(index){
-    dots.forEach(function(d,i){ d.classList.toggle('active', i===index); });
-    if(counter){ counter.textContent = String(index+1).padStart(2,'0'); }
-  }
+    totalSlidesEl.textContent = String(slides.length).padStart(2, '0');
 
-  if('IntersectionObserver' in window){
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting && entry.intersectionRatio > 0.5){
-          var idx = slides.indexOf(entry.target);
-          if(idx > -1){ setActive(idx); }
-        }
+    const dots = slides.map((slide, index) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', `Go to slide ${index + 1}: ${slide.dataset.title || ''}`.trim());
+      button.addEventListener('click', () => {
+        slide.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
-    }, { root: deck, threshold: [0.5] });
-    slides.forEach(function(s){ observer.observe(s); });
-  }
+      dotnav.appendChild(button);
+      return button;
+    });
 
-  document.addEventListener('keydown', function(e){
-    var current = dots.findIndex(function(d){ return d.classList.contains('active'); });
-    if(current === -1){ current = 0; }
-    if(e.key === 'ArrowDown' || e.key === 'PageDown'){
-      e.preventDefault();
-      var next = Math.min(current+1, slides.length-1);
-      slides[next].scrollIntoView({behavior:'smooth'});
-    } else if(e.key === 'ArrowUp' || e.key === 'PageUp'){
-      e.preventDefault();
-      var prev = Math.max(current-1, 0);
-      slides[prev].scrollIntoView({behavior:'smooth'});
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const index = slides.indexOf(entry.target);
+        if (index === -1) return;
+        currentSlideEl.textContent = String(index + 1).padStart(2, '0');
+        dots.forEach((dot, dotIndex) => {
+          dot.classList.toggle('active', dotIndex === index);
+        });
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === slides.length - 1;
+      });
+    }, {
+      root: deck,
+      threshold: 0.6,
+    });
+
+    slides.forEach((slide) => observer.observe(slide));
+
+    function goRelative(delta) {
+      const currentIndex = Math.max(0, Number(currentSlideEl.textContent) - 1 || 0);
+      const nextIndex = Math.min(slides.length - 1, Math.max(0, currentIndex + delta));
+      slides[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  });
 
-  setActive(0);
-})();
-</script>
+    prevBtn.addEventListener('click', () => goRelative(-1));
+    nextBtn.addEventListener('click', () => goRelative(1));
+
+    window.addEventListener('keydown', (event) => {
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
+      if (event.key === 'ArrowDown' || event.key === 'PageDown' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        goRelative(1);
+      }
+      if (event.key === 'ArrowUp' || event.key === 'PageUp' || event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goRelative(-1);
+      }
+      if (event.key === 'Home') {
+        event.preventDefault();
+        slides[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      if (event.key === 'End') {
+        event.preventDefault();
+        slides[slides.length - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    if (slides[0]) {
+      slides[0].scrollIntoView({ block: 'start' });
+      dots[0]?.classList.add('active');
+    }
+  </script>
 </body>
 </html>
