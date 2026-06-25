@@ -32,6 +32,9 @@
       --radius-md: 20px;
       --radius-sm: 14px;
       --max: 1220px;
+      --slide-top-safe: 78px;
+      --slide-bottom-safe: 68px;
+      --slide-side-safe: 32px;
     }
 
     * {
@@ -96,12 +99,19 @@
     .slide {
       min-height: 100vh;
       scroll-snap-align: start;
+      scroll-snap-stop: always;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 70px 0 54px;
+      padding: var(--slide-top-safe) 0 var(--slide-bottom-safe);
       isolation: isolate;
+      content-visibility: auto;
+      contain-intrinsic-size: 900px;
+    }
+
+    .slide:first-child {
+      content-visibility: visible;
     }
 
     .slide::before {
@@ -116,10 +126,10 @@
     }
 
     .slide-inner {
-      width: min(var(--max), calc(100vw - 64px));
-      min-height: calc(100vh - 132px);
+      width: min(var(--max), calc(100vw - (var(--slide-side-safe) * 2)));
+      min-height: calc(100vh - var(--slide-top-safe) - var(--slide-bottom-safe));
       border-radius: 34px;
-      padding: 54px 46px 98px;
+      padding: 58px 46px 112px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -216,108 +226,133 @@
       box-shadow: 0 0 0 6px rgba(0,212,170,0.09);
     }
 
-    .meta {
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .slide-footer {
       position: absolute;
       left: 46px;
+      right: 46px;
       bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--muted-2);
-      font-size: 0.76rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      z-index: 2;
-    }
-
-    .meta-logo {
-      height: 32px;
-      width: auto;
-      object-fit: contain;
-      opacity: 1;
-    }
-
-    .deck-topbar {
-      position: fixed;
-      top: 18px;
-      left: 24px;
-      right: 24px;
-      z-index: 60;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      pointer-events: none;
-    }
-
-    .deck-brand,
-    .deck-counter,
-    .deck-actions,
-    .dotnav {
-      pointer-events: auto;
-    }
-
-    .deck-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(6, 11, 20, 0.78);
+      padding: 12px 18px;
+      border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(7, 12, 21, 0.84);
       backdrop-filter: blur(12px);
       box-shadow: var(--shadow);
+      z-index: 3;
     }
 
-    .deck-brand img {
-      height: 24px;
+    .footer-brands {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .footer-separator {
+      color: rgba(255,255,255,0.28);
+      font-size: 0.95rem;
+      line-height: 1;
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .footer-brand-logo {
+      height: 46px;
       width: auto;
       object-fit: contain;
+      display: block;
     }
 
-    .deck-brand span {
-      color: var(--muted);
-      font-size: 0.77rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .deck-counter {
+    .footer-meta {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(6, 11, 20, 0.78);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--muted);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
+      gap: 8px;
+      color: var(--muted-2);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow);
+      font-family: 'Space Mono', monospace;
+      text-align: right;
+      white-space: nowrap;
     }
 
-    .deck-counter strong {
+    .footer-number {
       color: var(--text);
       font-weight: 700;
     }
 
+    .slide-footer.emphasis-trackt .footer-brand.aaryx,
+    .slide-footer.emphasis-aaryx .footer-brand.trackt,
+    .slide-footer.emphasis-balanced .footer-brand {
+      opacity: 0.84;
+    }
+
+    .slide-footer.emphasis-trackt .footer-brand.trackt,
+    .slide-footer.emphasis-aaryx .footer-brand.aaryx,
+    .slide-footer.emphasis-balanced .footer-brand {
+      opacity: 1;
+    }
+
+    .slide-footer.emphasis-trackt .footer-brand.trackt {
+      transform: translateY(-1px);
+    }
+
+    .slide-footer.emphasis-aaryx .footer-brand.aaryx {
+      transform: translateY(-1px);
+    }
+
+    .cover-brand-row {
+      position: absolute;
+      top: 34px;
+      left: 46px;
+      right: 46px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+      z-index: 3;
+    }
+
+    .cover-brand-logo {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
     .dotnav {
       position: fixed;
-      right: 22px;
+      right: 16px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 60;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .dotnav button {
-      width: 11px;
-      height: 11px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       background: rgba(255,255,255,0.18);
       border: 1px solid transparent;
@@ -333,22 +368,22 @@
     .deck-actions {
       position: fixed;
       left: 50%;
-      bottom: 10px;
+      bottom: 8px;
       transform: translateX(-50%);
       z-index: 60;
       display: flex;
-      gap: 10px;
+      gap: 8px;
       background: rgba(6, 11, 20, 0.82);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 999px;
-      padding: 6px;
+      padding: 5px;
       backdrop-filter: blur(12px);
       box-shadow: var(--shadow);
     }
 
     .nav-btn {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
@@ -525,20 +560,8 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 118px;
-      padding-bottom: 132px;
-    }
-
-    .hero-logo {
-      position: absolute;
-      top: 34px;
-      left: 42px;
-      height: 32px;
-      max-height: 32px;
-      width: auto;
-      object-fit: contain;
-      margin-bottom: 0;
-      z-index: 3;
+      padding-top: 136px;
+      padding-bottom: 148px;
     }
 
     .hero-tag {
@@ -562,6 +585,12 @@
     .hero-stack p {
       max-width: 680px;
       font-size: 1.08rem;
+    }
+
+    #slide-1 h1 {
+      max-width: 980px;
+      line-height: 0.92;
+      font-size: clamp(3.9rem, 7vw, 6rem);
     }
 
     .hero-rings {
@@ -1102,27 +1131,27 @@
     }
 
     .pricing-layout {
-      margin-top: 30px;
+      margin-top: 22px;
       display: grid;
       grid-template-columns: 1.16fr 0.84fr;
-      gap: 18px;
+      gap: 14px;
     }
 
     .pricing-stack {
       display: grid;
-      gap: 18px;
+      gap: 14px;
     }
 
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
     }
 
     .pricing-card {
-      padding: 20px;
+      padding: 18px;
       display: grid;
-      gap: 12px;
+      gap: 10px;
       background: linear-gradient(180deg, rgba(12, 18, 31, 0.96), rgba(8, 13, 24, 0.96));
     }
 
@@ -1158,17 +1187,17 @@
 
     .pricing-price {
       font-family: 'Space Mono', monospace;
-      font-size: 1.86rem;
+      font-size: 1.72rem;
       line-height: 1;
     }
 
     .pricing-price small {
       display: block;
-      margin-top: 8px;
+      margin-top: 6px;
       color: var(--muted-2);
-      font-size: 0.84rem;
+      font-size: 0.8rem;
       font-family: 'Inter', sans-serif;
-      line-height: 1.5;
+      line-height: 1.42;
     }
 
     .pricing-side {
@@ -1180,32 +1209,32 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      margin-top: 16px;
-      padding-top: 16px;
+      gap: 14px;
+      margin-top: 12px;
+      padding-top: 12px;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
     .pricing-summary strong {
       color: var(--text);
       font-family: 'Space Mono', monospace;
-      font-size: 0.96rem;
+      font-size: 0.92rem;
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .pricing-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 14px;
-      border-radius: 16px;
+      padding: 9px 12px;
+      border-radius: 14px;
       border: 1px solid rgba(59,106,245,0.18);
       background: rgba(59,106,245,0.08);
       color: #dce8ff;
       font-family: 'Space Mono', monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -1224,6 +1253,34 @@
       border-radius: 16px;
       background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    #slide-10 h2 {
+      max-width: 860px;
+      font-size: clamp(1.75rem, 2.9vw, 2.35rem);
+    }
+
+    #slide-10 .lede {
+      max-width: 700px;
+      font-size: 0.98rem;
+    }
+
+    #slide-10 .slide-head {
+      margin-bottom: 18px;
+      align-items: flex-start;
+    }
+
+    #slide-10 .pricing-layout {
+      transform: scale(0.92);
+      transform-origin: top center;
+      width: 108.7%;
+      margin-left: -4.35%;
+      margin-top: 8px;
+    }
+
+    #slide-10 .list {
+      gap: 8px;
+      font-size: 0.95rem;
     }
 
     .roadmap-grid {
@@ -1413,32 +1470,37 @@
         border-radius: 26px;
       }
 
-      .meta {
+      .slide-footer {
         left: 18px;
+        right: 18px;
         bottom: 18px;
+        padding: 10px 12px;
+        border-radius: 16px;
+        gap: 12px;
+      }
+
+      .footer-brands {
         gap: 10px;
-        font-size: 0.68rem;
       }
 
-      .meta-logo {
+      .footer-brand-logo {
+        height: 34px;
+      }
+
+      .footer-meta {
+        font-size: 0.64rem;
+        letter-spacing: 0.1em;
+      }
+
+      .cover-brand-row {
+        top: 24px;
+        left: 24px;
+        right: 24px;
+        gap: 14px;
+      }
+
+      .cover-brand-logo {
         height: 28px;
-      }
-
-      .deck-topbar {
-        top: 8px;
-        left: 10px;
-        right: 10px;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-
-      .deck-brand,
-      .deck-counter {
-        padding: 8px 10px;
-      }
-
-      .deck-brand span {
-        display: none;
       }
 
       .dotnav {
@@ -1486,12 +1548,6 @@
         align-items: flex-start;
       }
 
-      .hero-logo {
-        top: 24px;
-        left: 24px;
-        height: 28px;
-        max-height: 28px;
-      }
 
       .ask-logo {
         display: none;
@@ -1511,13 +1567,7 @@
   </style>
 </head>
 <body>
-  <div class="deck-topbar" aria-hidden="false">
-    <div class="deck-brand">
-      <img src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="Aaryx AI" />
-      <span>Aaryx AI / Trackt Pitch Deck</span>
-    </div>
-    <div class="deck-counter"><strong id="currentSlide">01</strong> / <span id="totalSlides">12</span></div>
-  </div>
+  <div class="visually-hidden" aria-hidden="true"><strong id="currentSlide">01</strong> / <span id="totalSlides">12</span></div>
 
   <div class="dotnav" id="dotnav" aria-label="Slide navigation"></div>
 
@@ -1536,26 +1586,28 @@
         <div class="hero-rings" aria-hidden="true">
           <span></span><span></span><span></span><span></span><i></i>
         </div>
+        <div class="cover-brand-row" aria-label="Aaryx AI presents Trackt">
+          <img class="cover-brand-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="Aaryx AI" />
+          <img class="cover-brand-logo" src="assets/trackt_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/trackt_horizontal_dark.png';" alt="Trackt" />
+        </div>
         <div class="hero-stack">
-          <img class="hero-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="Aaryx AI" />
           <div class="slide-kicker"><span class="dot"></span><span>Trackt is the flagship SaaS product</span></div>
-          <h1>Every morning. Everything that matters.</h1>
+          <h1>Every commitment.<br />Every risk.<br />One view.</h1>
           <p>
-            Aaryx AI is building the operating layer for relationship-driven businesses.
-            Trackt is the first product in that stack.
+            Trackt is the communication risk intelligence layer for relationship-driven operators.
+            Aaryx AI is the parent company building the broader operating system behind it.
           </p>
           <div class="brand-bridge">
-            <strong>Trackt</strong>
-            <span>Communication risk intelligence for professionals who live in email.</span>
+            <strong>Aaryx AI presents Trackt</strong>
+            <span>Flagship SaaS for communication risk across commitments, follow-ups, deadlines, and trust.</span>
           </div>
           <div class="button-row" role="group" aria-label="Cover calls to action">
             <a class="button primary" href="https://trackt-landing.vercel.app/index.html" target="_blank" rel="noopener noreferrer">View waitlist</a>
             <a class="button ghost" href="#slide-10">See pricing</a>
           </div>
-          <div class="hero-tag">An Aaryx AI Product</div>
+          <div class="hero-tag">Aaryx AI presents its flagship SaaS product</div>
           <div class="url-display">usetrackt.app</div>
         </div>
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>01 / Cover</span></div>
       </div>
     </section>
 
@@ -1624,8 +1676,6 @@
             </article>
           </div>
         </div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>02 / The Problem</span></div>
       </div>
     </section>
 
@@ -1667,8 +1717,6 @@
         </div>
 
         <div class="formula-note">Trackt is designed to surface these misses before they become write-offs.</div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>03 / The Cost</span></div>
       </div>
     </section>
 
@@ -1724,8 +1772,6 @@
             </ul>
           </article>
         </div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>04 / The Solution</span></div>
       </div>
     </section>
 
@@ -1765,8 +1811,6 @@
             <p>Review what changed, copy the suggested reply, and keep the relationship moving.</p>
           </article>
         </div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>05 / How It Works</span></div>
       </div>
     </section>
 
@@ -1814,8 +1858,6 @@
             </div>
           </section>
         </div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>06 / What Trackt Detects</span></div>
       </div>
     </section>
 
@@ -1879,8 +1921,6 @@
             </article>
           </div>
         </div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>07 / The Accountability Mirror</span></div>
       </div>
     </section>
 
@@ -1951,8 +1991,6 @@
             </article>
           </div>
         </div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>08 / The Dashboard</span></div>
       </div>
     </section>
 
@@ -1986,8 +2024,6 @@
             <article class="audience-card"><div class="pill">Insurance Agents</div><p>Renewals, quote requests, and referrals depend on staying ahead of communication decay.</p></article>
           </div>
         </div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>09 / Who It's For</span></div>
       </div>
     </section>
 
@@ -2023,7 +2059,7 @@
                 <div class="pricing-price">$14.99<span class="sr-only"> per month</span><small>Founding / was $29 per month</small></div>
                 <div class="list">
                   <li>Single workflow view</li>
-                  <li>Morning briefing</li>
+                  <li>Daily risk view</li>
                   <li>Core risk detection</li>
                 </div>
               </article>
@@ -2059,8 +2095,6 @@
             </article>
           </div>
         </div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>10 / Pricing</span></div>
       </div>
     </section>
 
@@ -2106,8 +2140,6 @@
             <p>Calendar cross-referencing deepens the signal. Mobile delivery sharpens daily utility.</p>
           </article>
         </div>
-
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>11 / Roadmap</span></div>
       </div>
     </section>
 
@@ -2115,7 +2147,7 @@
       <div class="slide-inner">
         <img class="ask-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="Aaryx AI" />
         <div class="eyebrow">The Ask</div>
-        <h2 style="max-width:860px;">Trackt is the flagship SaaS. Aaryx AI is the builder behind it. The next step is simple.</h2>
+        <h2 style="max-width:860px;">Aaryx AI builds the operating layer. Trackt is the flagship product proving the wedge. The next step is simple.</h2>
         <p class="lede" style="max-width:720px; margin-left:auto; margin-right:auto;">Join the early access list. Put a recruiter friend in the room. Or talk to Aaryx AI about the DFY path and the AI Blueprint discovery process.</p>
         <div class="url-display">usetrackt.app</div>
 
@@ -2142,8 +2174,7 @@
           </article>
         </div>
 
-        <div class="muted-label">Aaryx AI = parent company / builder. Trackt = flagship SaaS product. Aaryx AI DFY = premium implementation path.</div>
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>12 / The Ask</span></div>
+        <div class="muted-label">Aaryx AI is the parent company and design system. Trackt is the flagship SaaS product. The DFY path is the premium implementation layer above it.</div>
       </div>
     </section>
   </main>
@@ -2153,6 +2184,35 @@
     const slides = Array.from(document.querySelectorAll('.slide'));
     const currentSlideEl = document.getElementById('currentSlide');
     const totalSlidesEl = document.getElementById('totalSlides');
+
+
+    const FOOTER_LOGOS = {
+      aaryxSvg: 'assets/aaryxai_horizontal_dark.svg',
+      aaryxPng: 'assets/aaryxai_horizontal_dark.png',
+      tracktSvg: 'assets/trackt_horizontal_dark.svg',
+      tracktPng: 'assets/trackt_horizontal_dark.png',
+    };
+
+    function createFooter(index, title, emphasis) {
+      const footer = document.createElement('div');
+      footer.className = `slide-footer emphasis-${emphasis}`;
+      footer.innerHTML = `
+        <div class="footer-brands" aria-label="Aaryx AI and Trackt">
+          <span class="footer-brand aaryx"><img class="footer-brand-logo" src="${FOOTER_LOGOS.aaryxSvg}" onerror="this.onerror=null;this.src='${FOOTER_LOGOS.aaryxPng}';" alt="Aaryx AI" /></span>
+          <span class="footer-separator" aria-hidden="true">•</span>
+          <span class="footer-brand trackt"><img class="footer-brand-logo" src="${FOOTER_LOGOS.tracktSvg}" onerror="this.onerror=null;this.src='${FOOTER_LOGOS.tracktPng}';" alt="Trackt" /></span>
+        </div>
+        <div class="footer-meta"><span class="footer-number">${String(index + 1).padStart(2, '0')}</span><span>/</span><span>${title}</span></div>
+      `;
+      return footer;
+    }
+
+    slides.forEach((slide, index) => {
+      const slideInner = slide.querySelector('.slide-inner');
+      if (!slideInner || slideInner.querySelector('.slide-footer')) return;
+      const emphasis = index === 0 ? 'balanced' : (index <= 8 ? 'trackt' : 'aaryx');
+      slideInner.appendChild(createFooter(index, slide.dataset.title || `Slide ${index + 1}`, emphasis));
+    });
     const dotnav = document.getElementById('dotnav');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');

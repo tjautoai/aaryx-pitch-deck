@@ -1,0 +1,16 @@
+{
+  "name": "aaryx-pitch-deck-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "verify.js",
+  "scripts": {
+    "test": "LD_LIBRARY_PATH=/home/leiat/.local/playwright-libs/extracted/usr/lib/x86_64-linux-gnu node verify.js",
+    "export:pdf": "LD_LIBRARY_PATH=/home/leiat/.local/playwright-libs/extracted/usr/lib/x86_64-linux-gnu node export-pdf.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.61.1"
+  }
+}
