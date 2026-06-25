@@ -231,10 +231,10 @@
     }
 
     .meta-logo {
-      height: 24px;
+      height: 32px;
       width: auto;
       object-fit: contain;
-      opacity: 0.95;
+      opacity: 1;
     }
 
     .deck-topbar {
@@ -270,7 +270,7 @@
     }
 
     .deck-brand img {
-      height: 22px;
+      height: 24px;
       width: auto;
       object-fit: contain;
     }
@@ -525,14 +525,20 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      padding-top: 118px;
       padding-bottom: 132px;
     }
 
     .hero-logo {
-      height: 56px;
+      position: absolute;
+      top: 34px;
+      left: 42px;
+      height: 32px;
+      max-height: 32px;
       width: auto;
       object-fit: contain;
-      margin-bottom: 28px;
+      margin-bottom: 0;
+      z-index: 3;
     }
 
     .hero-tag {
@@ -549,7 +555,7 @@
       gap: 16px;
       place-items: center;
       max-width: 900px;
-      position: relative;
+      position: static;
       z-index: 1;
     }
 
@@ -1289,10 +1295,7 @@
     }
 
     .ask-logo {
-      height: 42px;
-      width: auto;
-      object-fit: contain;
-      margin: 0 auto 24px;
+      display: none;
     }
 
     .ask-grid {
@@ -1418,7 +1421,7 @@
       }
 
       .meta-logo {
-        height: 20px;
+        height: 28px;
       }
 
       .deck-topbar {
@@ -1484,11 +1487,14 @@
       }
 
       .hero-logo {
-        height: 48px;
+        top: 24px;
+        left: 24px;
+        height: 28px;
+        max-height: 28px;
       }
 
       .ask-logo {
-        height: 38px;
+        display: none;
       }
     }
 
@@ -1507,7 +1513,7 @@
 <body>
   <div class="deck-topbar" aria-hidden="false">
     <div class="deck-brand">
-      <img src="assets/aaryxai_horizontal_logo.png" alt="Aaryx AI" />
+      <img src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="Aaryx AI" />
       <span>Aaryx AI / Trackt Pitch Deck</span>
     </div>
     <div class="deck-counter"><strong id="currentSlide">01</strong> / <span id="totalSlides">12</span></div>
@@ -1531,7 +1537,7 @@
           <span></span><span></span><span></span><span></span><i></i>
         </div>
         <div class="hero-stack">
-          <img class="hero-logo" src="assets/aaryxai_horizontal_logo.png" alt="Aaryx AI" />
+          <img class="hero-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="Aaryx AI" />
           <div class="slide-kicker"><span class="dot"></span><span>Trackt is the flagship SaaS product</span></div>
           <h1>Every morning. Everything that matters.</h1>
           <p>
@@ -1549,7 +1555,7 @@
           <div class="hero-tag">An Aaryx AI Product</div>
           <div class="url-display">usetrackt.app</div>
         </div>
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>01 / Cover</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>01 / Cover</span></div>
       </div>
     </section>
 
@@ -1619,7 +1625,7 @@
           </div>
         </div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>02 / The Problem</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>02 / The Problem</span></div>
       </div>
     </section>
 
@@ -1662,7 +1668,7 @@
 
         <div class="formula-note">Trackt is designed to surface these misses before they become write-offs.</div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>03 / The Cost</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>03 / The Cost</span></div>
       </div>
     </section>
 
@@ -1719,7 +1725,7 @@
           </article>
         </div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>04 / The Solution</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>04 / The Solution</span></div>
       </div>
     </section>
 
@@ -1760,7 +1766,7 @@
           </article>
         </div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>05 / How It Works</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>05 / How It Works</span></div>
       </div>
     </section>
 
@@ -1809,7 +1815,7 @@
           </section>
         </div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>06 / What Trackt Detects</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>06 / What Trackt Detects</span></div>
       </div>
     </section>
 
@@ -1874,7 +1880,7 @@
           </div>
         </div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>07 / The Accountability Mirror</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>07 / The Accountability Mirror</span></div>
       </div>
     </section>
 
@@ -1946,7 +1952,7 @@
           </div>
         </div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>08 / The Dashboard</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>08 / The Dashboard</span></div>
       </div>
     </section>
 
@@ -1981,7 +1987,7 @@
           </div>
         </div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>09 / Who It's For</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>09 / Who It's For</span></div>
       </div>
     </section>
 
@@ -2054,7 +2060,7 @@
           </div>
         </div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>10 / Pricing</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>10 / Pricing</span></div>
       </div>
     </section>
 
@@ -2101,13 +2107,13 @@
           </article>
         </div>
 
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>11 / Roadmap</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>11 / Roadmap</span></div>
       </div>
     </section>
 
     <section class="slide ask-slide" id="slide-12" data-title="The Ask">
       <div class="slide-inner">
-        <img class="ask-logo" src="assets/aaryxai_horizontal_logo.png" alt="Aaryx AI" />
+        <img class="ask-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="Aaryx AI" />
         <div class="eyebrow">The Ask</div>
         <h2 style="max-width:860px;">Trackt is the flagship SaaS. Aaryx AI is the builder behind it. The next step is simple.</h2>
         <p class="lede" style="max-width:720px; margin-left:auto; margin-right:auto;">Join the early access list. Put a recruiter friend in the room. Or talk to Aaryx AI about the DFY path and the AI Blueprint discovery process.</p>
@@ -2137,7 +2143,7 @@
         </div>
 
         <div class="muted-label">Aaryx AI = parent company / builder. Trackt = flagship SaaS product. Aaryx AI DFY = premium implementation path.</div>
-        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_logo.png" alt="" aria-hidden="true" /><span>12 / The Ask</span></div>
+        <div class="meta"><img class="meta-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="" aria-hidden="true" /><span>12 / The Ask</span></div>
       </div>
     </section>
   </main>
