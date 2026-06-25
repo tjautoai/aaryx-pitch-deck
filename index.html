@@ -282,6 +282,10 @@
       display: block;
     }
 
+    .footer-brand-logo.trackt-logo {
+      height: 44px;
+    }
+
     .footer-meta {
       display: inline-flex;
       align-items: center;
@@ -337,6 +341,10 @@
       width: auto;
       object-fit: contain;
       display: block;
+    }
+
+    .cover-brand-logo.trackt-logo {
+      height: 36px;
     }
 
     .dotnav {
@@ -1487,6 +1495,10 @@
         height: 34px;
       }
 
+      .footer-brand-logo.trackt-logo {
+        height: 32px;
+      }
+
       .footer-meta {
         font-size: 0.64rem;
         letter-spacing: 0.1em;
@@ -1501,6 +1513,10 @@
 
       .cover-brand-logo {
         height: 28px;
+      }
+
+      .cover-brand-logo.trackt-logo {
+        height: 26px;
       }
 
       .dotnav {
@@ -1588,7 +1604,7 @@
         </div>
         <div class="cover-brand-row" aria-label="Aaryx AI presents Trackt">
           <img class="cover-brand-logo" src="assets/aaryxai_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/aaryxai_horizontal_dark.png';" alt="Aaryx AI" />
-          <img class="cover-brand-logo" src="assets/trackt_horizontal_dark.svg" onerror="this.onerror=null;this.src='assets/trackt_horizontal_dark.png';" alt="Trackt" />
+          <img class="cover-brand-logo trackt-logo" src="assets/trackt_horizontal_dark.png" alt="Trackt" />
         </div>
         <div class="hero-stack">
           <div class="slide-kicker"><span class="dot"></span><span>Trackt is the flagship SaaS product</span></div>
@@ -2189,7 +2205,6 @@
     const FOOTER_LOGOS = {
       aaryxSvg: 'assets/aaryxai_horizontal_dark.svg',
       aaryxPng: 'assets/aaryxai_horizontal_dark.png',
-      tracktSvg: 'assets/trackt_horizontal_dark.svg',
       tracktPng: 'assets/trackt_horizontal_dark.png',
     };
 
@@ -2200,7 +2215,7 @@
         <div class="footer-brands" aria-label="Aaryx AI and Trackt">
           <span class="footer-brand aaryx"><img class="footer-brand-logo" src="${FOOTER_LOGOS.aaryxSvg}" onerror="this.onerror=null;this.src='${FOOTER_LOGOS.aaryxPng}';" alt="Aaryx AI" /></span>
           <span class="footer-separator" aria-hidden="true">•</span>
-          <span class="footer-brand trackt"><img class="footer-brand-logo" src="${FOOTER_LOGOS.tracktSvg}" onerror="this.onerror=null;this.src='${FOOTER_LOGOS.tracktPng}';" alt="Trackt" /></span>
+          <span class="footer-brand trackt"><img class="footer-brand-logo trackt-logo" src="${FOOTER_LOGOS.tracktPng}" alt="Trackt" /></span>
         </div>
         <div class="footer-meta"><span class="footer-number">${String(index + 1).padStart(2, '0')}</span><span>/</span><span>${title}</span></div>
       `;
